@@ -1,1 +1,3 @@
-export function wrapperEnv(env: Recordable): ViteEnv {}
+export function wrapperEnv(env: Recordable): ViteEnv {
+  return;
+}

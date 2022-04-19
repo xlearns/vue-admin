@@ -1,17 +1,11 @@
-import { fileURLToPath, URL } from "url";
 import WindiCSS from "vite-plugin-windicss";
 import type { ConfigEnv } from "vite";
 import { loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 import { wrapperEnv } from "./build/utils";
+import alias from "./build/vite/alias";
 
-// 设置别名
-const alias = {
-  "@": fileURLToPath(new URL("./src", import.meta.url)),
-  "@c": fileURLToPath(new URL("./src/components", import.meta.url)),
-  "@build": fileURLToPath(new URL("./build", import.meta.url))
-};
 // https://vitejs.dev/config/
 export default ({ command, mode }: ConfigEnv) => {
   const root = process.cwd();
