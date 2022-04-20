@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "module": "esnext",
+    "moduleResolution": "node",
     // 重点否则全局d.ts不生效
     "typeRoots": ["./node_modules/@types/", "./types"]
   },
@@ -9,7 +11,9 @@
     "src/**/*.vue",
     "types/*.d.ts",
     "mock/*.ts",
-    "vite.config.ts"
+    "vite.config.ts",
+    "build/**/*.ts",
+    "build/**/*.d.ts",
   ],
   "exclude": ["node_modules", "dist", "**/*.js"]
 }
