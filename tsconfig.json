@@ -2,6 +2,15 @@
   "compilerOptions": {
     "module": "esnext",
     "moduleResolution": "node",
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@c/*": ["src/components/*"],
+      "@plugins/*": ["src/plugins/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@build/*": ["build/*"]
+    },
     // 重点否则全局d.ts不生效
     "typeRoots": ["./node_modules/@types/", "./types"]
   },
@@ -13,7 +22,7 @@
     "mock/*.ts",
     "vite.config.ts",
     "build/**/*.ts",
-    "build/**/*.d.ts",
+    "build/**/*.d.ts"
   ],
   "exclude": ["node_modules", "dist", "**/*.js"]
 }
