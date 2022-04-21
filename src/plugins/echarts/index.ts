@@ -1,15 +1,24 @@
 import * as echarts from "echarts/core";
 import { PieChart, BarChart, LineChart, GraphChart } from "echarts/charts";
-import { SVGRenderer } from "echarts/renderers";
+
 import {
-  GridComponent,
   TitleComponent,
-  LegendComponent,
-  ToolboxComponent,
   TooltipComponent,
+  GridComponent,
+  PolarComponent,
+  AriaComponent,
+  ParallelComponent,
+  LegendComponent,
+  RadarComponent,
+  ToolboxComponent,
   DataZoomComponent,
-  VisualMapComponent
+  VisualMapComponent,
+  TimelineComponent,
+  CalendarComponent,
+  GraphicComponent
 } from "echarts/components";
+
+import { SVGRenderer } from "echarts/renderers";
 const { use } = echarts;
 
 use([
@@ -18,13 +27,20 @@ use([
   LineChart,
   GraphChart,
   SVGRenderer,
-  GridComponent,
   TitleComponent,
-  LegendComponent,
-  ToolboxComponent,
   TooltipComponent,
+  GridComponent,
+  PolarComponent,
+  AriaComponent,
+  ParallelComponent,
+  LegendComponent,
+  RadarComponent,
+  ToolboxComponent,
   DataZoomComponent,
-  VisualMapComponent
+  VisualMapComponent,
+  TimelineComponent,
+  CalendarComponent,
+  GraphicComponent
 ]);
 // 按需加载
 export default echarts;
