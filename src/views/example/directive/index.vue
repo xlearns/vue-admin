@@ -6,13 +6,15 @@ const emptyValue = reactive({
   // img: 'import "../assets/empty.png"',
   visible: true
 });
-const test = function () {
-  emptyValue.visible = !emptyValue.visible;
-};
 </script>
 <template>
-  <button @click="test">{{ emptyValue.visible }}</button>
-  <div v-empty="emptyValue">hello world</div>
+  <div style="width: 10px" v-ellipsis:20>hello world</div>
+  <div style="position: relative">
+    <div v-drag style="background: red">{{ emptyValue.visible }}</div>
+  </div>
+  <div style="position: relative">
+    <div v-empty="emptyValue">hello world</div>
+  </div>
 </template>
 
 <style scoped></style>

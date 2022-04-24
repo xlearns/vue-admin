@@ -7,6 +7,7 @@ import { MotionPlugin } from "@vueuse/motion";
 import { useElementPlus } from "./plugins/element-plus";
 import directives from "@/directives";
 const app = createApp(App);
+
 Object.keys(directives).forEach(name => app.directive(name, directives[name]));
 app.use(MotionPlugin);
 app.use(createPinia());
