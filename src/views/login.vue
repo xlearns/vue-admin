@@ -12,7 +12,12 @@ const test = function () {
 </script>
 <template>
   <button @click="test">{{ emptyValue.visible }}</button>
-  <div v-empty="emptyValue">hello world</div>
+  <div
+    v-empty="emptyValue"
+    style="border: 5px solid red; width: 100px; height: 100px"
+  >
+    hello world
+  </div>
 </template>
 
 <style scoped></style>

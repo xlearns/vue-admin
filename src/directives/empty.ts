@@ -6,9 +6,13 @@ let lock = false;
 function exec(el, binding, vbode) {
   el.style.position = el.style.position || "relative";
   const { offsetHeight, offsetWidth } = el;
+  const { borderTopWidth, borderLeftWidth } = el.style;
+  // const isBoxSizing = el.style.boxSizing === "border-box";
   const { visible, content, img } = binding.value;
-  const defaultStyle =
-    "position:absolute;top:0;left:0;z-index:9999;background:#fff;display:flex;justify-content: center;align-items: center;";
+
+  const top = `-${borderTopWidth}` || 0;
+  const left = `-${borderLeftWidth}` || 0;
+  const defaultStyle = `position:absolute;top:${top};left:${left};z-index:9999;background:#fff;display:flex;justify-content: center;align-items: center;`;
   const temp = {
     render() {
       return h(
@@ -53,5 +57,11 @@ export default {
   },
   updated(el, binding, vnode) {
     exec(el, binding, vnode);
+  },
+  unmounted(el) {
+    if (lock) {
+      lock = false;
+      el.removeChild(el.lastChild);
+    }
   }
 };

@@ -1,5 +1,5 @@
 export default {
-  beforeMount(el, binding, vnode) {
+  beforeMount(el, binding) {
     // 响应点击后滚动到元素顶部
     el.addEventListener("click", () => {
       const target = binding.arg
@@ -11,7 +11,7 @@ export default {
       });
     });
   },
-  update(el, binding, vnode) {
+  update(el, binding) {
     // 滚动到达参数值才出现绑定指令的元素
     const target = binding.arg ? document.getElementById(binding.arg) : window;
     if (binding.value) {
