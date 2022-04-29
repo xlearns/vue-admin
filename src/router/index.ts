@@ -1,46 +1,38 @@
-import { createRouter, createWebHistory } from "vue-router";
-import NProgress from "@/utils/progress";
-import { useStorage } from "@vueuse/core";
-import { initRouter } from "./utils";
+import type { RouteRecordRaw } from "vue-router";
 
-// 路由
-import mustRouter from "./modules/must";
-import homeRouter from "./modules/home";
+import { createRouter, createWebHashHistory } from "vue-router";
 
-// 原始静态路由（未做任何处理）
-const routes = [...homeRouter];
+import { basicRoutes } from "./routes";
+
+// 白名单应该包含基本静态路由
+const WHITE_NAME_LIST: string[] = [];
+
+const getRouteNames = function (array: any[]) {
+  array.forEach(item => {
+    WHITE_NAME_LIST.push(item.name);
+    getRouteNames(item.children || []);
+  });
+};
+
+getRouteNames(basicRoutes);
+
+// app router
 
 export const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes: routes.concat(...mustRouter)
+  history: createWebHashHistory(import.meta.env.VITE_PUBLIC_PATH),
+  routes: basicRoutes as unknown as RouteRecordRaw[],
+  // 不允许尾部的斜线
+  strict: true,
+  // 始终滚动到顶部
+  scrollBehavior: () => ({ left: 0, top: 0 })
 });
 
-const whiteList = ["/login"];
+// reset router
+export function resetRouter() {
+  router.getRoutes().forEach(route => {});
+}
 
-router.beforeEach((to, from, next) => {
-  const token = useStorage("token", "");
-
-  NProgress.start();
-  if (token.value) {
-    initRouter(token).then(router => {
-      // console.log(router);
-    });
-    next();
-  } else {
-    if (to.path !== "/login") {
-      if (whiteList.indexOf(to.path) !== -1) {
-        next();
-      } else {
-        next("/login");
-      }
-    } else {
-      next();
-    }
-  }
-});
-
-router.afterEach(() => {
-  NProgress.done();
-});
-
-export default router;
+// config router
+export function setupRouter(app: App<Element>) {
+  app.use(router);
+}
