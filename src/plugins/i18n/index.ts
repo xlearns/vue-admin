@@ -1,4 +1,4 @@
-import type { App } from "vue";
+import { type App, watchEffect } from "vue";
 import { type I18n, createI18n } from "vue-i18n/index";
 import { useStorage } from "@vueuse/core";
 
@@ -35,10 +35,14 @@ export const localesConfigs = {
 };
 
 const i18n: I18n = createI18n({
-  legacy: false,
+  // legacy: false, // Composition API 模式
   locale: state.value?.locale ?? "zh",
   fallbackLocale: "en",
   messages: localesConfigs
+});
+
+watchEffect(() => {
+  i18n.global.locale = state.value?.locale ?? "zh";
 });
 
 export function useI18n(app: App) {
