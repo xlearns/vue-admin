@@ -1,22 +1,23 @@
 # 功能清单
-[] 多语言.
 
-[] 全屏
+- [x] 多语言
 
-[] 菜单搜索
+- [x] 全屏
 
-[] 侧边栏缩进
+- [x] 菜单搜索
 
-[] 面包屑
+- [x] 侧边栏缩进
 
-[] TagsView
+- [x] 面包屑
 
-[] husky
+- [x] TagsView
 
-[] svg组件
+- [x] husky
 
-[] 首页大屏模块
+- [x] svg 组件
 
-[] axios封装
+- [x] 首页大屏模块
 
-[] windi css
+- [x] axios 封装
+
+[x] windicss

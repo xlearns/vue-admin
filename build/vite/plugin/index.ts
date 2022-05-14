@@ -7,19 +7,20 @@ import ElementPlus from "unplugin-element-plus/vite";
 import svgLoader from "vite-svg-loader";
 import VueI18n from "@intlify/vite-plugin-vue-i18n";
 import configHtmlPlugin from "./html";
+
 export function getPluginsList(viteEnv, VITE_LEGACY) {
   const vitePlugins: (PluginOption | PluginOption[])[] = [
     vue(),
-    vueJsx(),
-    WindiCSS(),
-    ElementPlus({}),
-    svgLoader(),
     // 必须安装vue-i18n
     VueI18n({
       runtimeOnly: true,
       compositionOnly: true,
       include: [resolve("locales/**")]
-    })
+    }),
+    vueJsx(),
+    WindiCSS(),
+    ElementPlus({}),
+    svgLoader()
   ];
   // vite-plugin-html
   vitePlugins.push(configHtmlPlugin(viteEnv, VITE_LEGACY));

@@ -29,7 +29,7 @@ export const RootRoute: AppRouteModule = {
 export const LoginRoute: AppRouteModule = {
   path: "/login",
   name: "Login",
-  component: () => import("@/views/login/index.vue"),
+  component: () => import("@/views/login/login.vue"),
   meta: {
     title: "登录"
   }
