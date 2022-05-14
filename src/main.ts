@@ -6,6 +6,9 @@ import router from "./router";
 import { MotionPlugin } from "@vueuse/motion";
 import { useElementPlus } from "./plugins/element-plus";
 import directives from "@/directives";
+// 导入公共样式
+import "./style/index.scss";
+
 // 国际化
 import { useI18n } from "./plugins/i18n";
 

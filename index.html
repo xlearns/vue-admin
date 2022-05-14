@@ -14,6 +14,11 @@
         #app {
           width: 100%;
           height: 100%;
+          overflow: hidden;
+        }
+        .app-loading {
+          width: 100%;
+          height: 100%;
           display: flex;
           position: relative;
           justify-content: center;
@@ -89,7 +94,9 @@
           }
         }
       </style>
-      <div class="loader"></div>
+      <div class="app-loading">
+        <div class="loader"></div>
+      </div>
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>

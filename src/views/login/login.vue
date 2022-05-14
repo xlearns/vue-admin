@@ -1,16 +1,8 @@
-<script setup lang="ts">
-import { useI18n } from "vue-i18n";
-let { t } = useI18n();
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <div>{{ t("test.hello") }}</div>
-
-  <el-pagination
-    :page-sizes="[100, 200, 300, 400]"
-    layout="total, sizes, prev, pager, next, jumper"
-    :total="400"
-  />
+  <div class="test"></div>
 </template>
-
-<style scoped></style>
+<style scoped>
+@import url("@/style/login.scss");
+</style>
