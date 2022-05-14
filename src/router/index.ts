@@ -1,5 +1,5 @@
 import type { RouteRecordRaw } from "vue-router";
-
+import type { App } from "vue";
 import { createRouter, createWebHashHistory } from "vue-router";
 
 import { basicRoutes } from "./routes";
@@ -36,3 +36,5 @@ export function resetRouter() {
 export function setupRouter(app: App<Element>) {
   app.use(router);
 }
+
+export default router;
