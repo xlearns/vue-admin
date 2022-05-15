@@ -2,7 +2,6 @@ import { defineStore } from "pinia";
 import { usePermissionStore } from "./permission";
 import { router } from "@/router";
 
-const permissionStore = usePermissionStore();
 export const useUserStore = defineStore({
   id: "user",
   state: () => ({
@@ -22,6 +21,7 @@ export const useUserStore = defineStore({
       return this.afterLoginAction();
     },
     async afterLoginAction() {
+      const permissionStore = usePermissionStore();
       const routes = await permissionStore.buildRoutesAction();
       routes.forEach(route => {
         router.addRoute(route);

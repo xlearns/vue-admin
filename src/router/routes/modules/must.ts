@@ -6,7 +6,8 @@ const mustRouter = [
     meta: {
       title: "login",
       showLink: false,
-      rank: 101
+      rank: 101,
+      roles: ["test"]
     }
   },
   {
