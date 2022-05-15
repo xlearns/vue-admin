@@ -25,7 +25,8 @@
   },
   "stylelint.enable": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.stylelint": true
+    "source.fixAll.stylelint": true,
+    "source.fixAll.eslint": true
   },
   "stylelint.validate": ["css", "less", "postcss", "scss", "vue", "sass"],
   "i18n-ally.localesPaths": "locales",
