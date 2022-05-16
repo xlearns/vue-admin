@@ -34,7 +34,7 @@ export function usePermission() {
       roles = [roles];
     }
     userStore.setRoleList(roles);
-    return resume();
+    await resume();
   }
   return {
     changeRole,
