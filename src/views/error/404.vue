@@ -1,8 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div>welcome</div>
-  <router-view />
+  <div>404</div>
 </template>
 
 <style scoped></style>

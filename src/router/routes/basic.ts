@@ -37,5 +37,8 @@ export const errorRouter: AppRouteModule = {
     }
   ]
 };
-
+export const PAGE_NOT_FOUND_ROUTE = {
+  path: "/:pathMatch(.*)",
+  redirect: "/error/404"
+};
 export default errorRouter;

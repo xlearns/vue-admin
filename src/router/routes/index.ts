@@ -1,6 +1,6 @@
 import type { AppRouteModule } from "./types";
 import PageEnum from "@/enums/pageEnum";
-import { errorRouter } from "./basic";
+import { errorRouter, PAGE_NOT_FOUND_ROUTE } from "./basic";
 // 获取所有modules下的ts文件
 const modules = import.meta.globEager("./modules/**/*.ts");
 
@@ -29,7 +29,7 @@ export const RootRoute: AppRouteModule = {
 export const LoginRoute: AppRouteModule = {
   path: "/login",
   name: "Login",
-  component: () => import("@/views/login/index.vue"),
+  component: () => import("@/views/login/login.vue"),
   meta: {
     title: "登录"
   }
