@@ -1,6 +1,6 @@
 import type { AppRouteModule } from "./types";
 import PageEnum from "@/enums/pageEnum";
-import { errorRouter } from "./basic";
+import { errorRouter, PAGE_NOT_FOUND_ROUTE } from "./basic";
 // 获取所有modules下的ts文件
 const modules = import.meta.globEager("./modules/**/*.ts");
 
@@ -35,4 +35,8 @@ export const LoginRoute: AppRouteModule = {
   }
 };
 
-export const basicRoutes = [LoginRoute, RootRoute, errorRouter];
+export const basicRoutes = [
+  LoginRoute,
+  RootRoute,
+  errorRouter
+];
