@@ -35,8 +35,4 @@ export const LoginRoute: AppRouteModule = {
   }
 };
 
-export const basicRoutes = [
-  LoginRoute,
-  RootRoute,
-  errorRouter
-];
+export const basicRoutes = [LoginRoute, RootRoute, errorRouter];

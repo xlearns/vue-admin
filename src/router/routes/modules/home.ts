@@ -1,21 +1,20 @@
+import { RoleEnum } from "@/enums/roleEnum";
 const homeRouter = [
   {
     path: "/welcome",
     name: "welcome",
     component: () => import("@/views/welcome.vue"),
     meta: {
-      icon: "home-filled",
       title: "hello",
-      rank: 0
-      // roles: ["super"]
-    }
-    // children: [
-    //   {
-    //     path: "/welcome",
-    //     name: "welcome",
-    //     component: () => import("@/views/welcome.vue")
-    //   }
-    // ]
+      roles: [RoleEnum.SUPER]
+    },
+    children: [
+      {
+        path: "test",
+        name: "test",
+        component: () => import("@/views/test.vue")
+      }
+    ]
   }
 ];
 

@@ -26,8 +26,6 @@ export const useUserStore = defineStore({
       routes.forEach(route => {
         router.addRoute(route);
       });
-      //  404
-      //  router.addRoute()
     }
   }
 });

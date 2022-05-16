@@ -6,8 +6,8 @@ export interface AppRouteModule {
   component?: string | Component;
   redirect?: string;
   children?: AppRouteModule[];
-  meta: {
-    title: string;
+  meta?: {
+    title?: string;
     icon?: string;
     hidden?: boolean;
     roles?: string[];
