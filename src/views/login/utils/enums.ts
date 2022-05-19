@@ -1,11 +1,11 @@
 export const operates = [
   {
-    title: "手机登录"
+    title: "phone"
   },
   {
-    title: "二维码登录"
+    title: "qrcode"
   },
   {
-    title: "注册"
+    title: "register"
   }
 ];

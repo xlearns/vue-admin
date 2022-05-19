@@ -8,7 +8,7 @@ const state = useStorage("locale", {
 });
 function changeLocale(val: string) {
   locale.value = val;
-  state.value.locale = val;
+  state.value = { locale: val };
 }
 </script>
 

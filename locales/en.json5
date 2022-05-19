@@ -1,8 +1,18 @@
 {
   login: {
-    title: "login"
+    title: "login",
+    username: "username",
+    password: "password",
+    signin: "Sign in",
+    remember: "Remember me",
+    forget: "Forget Password?",
+    phone: "Mobile sign in",
+    register: "Sign up",
+    qrcode: "Qr code sign in"
   },
   register: {
-    title: "register"
+    title: "register",
+    username: "username",
+    password: "password"
   }
 }

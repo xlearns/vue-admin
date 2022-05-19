@@ -1,8 +1,18 @@
 {
   login: {
-    title: "登录"
+    title: "登录",
+    username: "账号",
+    password: "密码",
+    signin: "登录",
+    remember: "记住密码",
+    forget: "忘记密码?",
+    phone: "手机登录",
+    register: "注册",
+    qrcode: "二维码登录"
   },
   register: {
-    title: "注册"
+    title: "注册",
+    username: "账号",
+    password: "密码"
   }
 }
