@@ -4,21 +4,23 @@ import Motion from "./utils/motion.vue";
 import { operates } from "./utils/enums";
 import { useLogin } from "@/hooks/login/useLogin";
 
-const { ruleForm } = useLogin();
+const { ruleForm, passkeep } = useLogin();
 </script>
 <template>
-  <img :src="bg" class="fixed h-full left-0 bottom-0 -z-1" />
-  <div class="w-full h-full grid grid-cols-[1fr,1fr] gap-18rem px-2rem">
-    <div class="flex justify-end items-center">
+  <img :src="bg" class="<lg:hidden fixed h-full left-0 bottom-0 -z-1" />
+  <div
+    class="<xl:gap-9rem <lg:grid-cols-1 w-full h-full grid grid-cols-[1fr,1fr] gap-18rem px-2rem"
+  >
+    <div class="<lg:hidden flex justify-end items-center">
       <Motion>
         <!-- <component :is="currentWeek" /> -->
         <currentWeek />
       </Motion>
     </div>
-    <div class="flex justify-center items-center">
-      <div class="w-290px text-center">
+    <div class="<lg:justify-center flex items-center">
+      <div class="w-290px text-left xl:w-360px">
         <Motion>
-          <h2 class="text-[#999] text-4xl">Vue Admin</h2>
+          <h2 class="mb-3 text-2xl font-bold">登录</h2>
         </Motion>
 
         <el-form>
@@ -44,7 +46,11 @@ const { ruleForm } = useLogin();
 
           <Motion :delay="250">
             <el-form-item>
-              <el-button class="w-full" size="default" type="primary">
+              <div class="w-full h-20px flex justify-between items-center">
+                <el-checkbox v-model="passkeep">记住密码</el-checkbox>
+                <el-button type="text"> 忘记密码? </el-button>
+              </div>
+              <el-button class="w-full mt-4" size="default" type="primary">
                 登录
               </el-button>
             </el-form-item>
@@ -69,6 +75,3 @@ const { ruleForm } = useLogin();
     </div>
   </div>
 </template>
-<style scoped>
-@import url("@/style/login.scss");
-</style>

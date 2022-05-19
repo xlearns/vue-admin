@@ -1,5 +1,19 @@
 @media screen and (max-width: 1180px) {
+  .login-container {
+    grid-gap: 9rem;
+  }
 }
 
 @media screen and (max-width: 968px) {
+  .no {
+    display: none;
+  }
+
+  .login-container {
+    grid-template-columns: 1fr;
+  }
+
+  .login-box {
+    justify-content: center;
+  }
 }

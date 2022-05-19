@@ -1,2 +1,11 @@
-// https://cn.windicss.org/ 中文文档
-// https://windicss.org/integrations/vite.html  英文文档
+export default {
+  theme: {
+    screens: {
+      sm: "576px",
+      md: "768px",
+      lg: "992px",
+      xl: "1200px",
+      "2xl": "1600px"
+    }
+  }
+};

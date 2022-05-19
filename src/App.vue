@@ -19,5 +19,3 @@ const currentLocale = computed(() => {
     <router-view />
   </el-config-provider>
 </template>
-
-<style scoped></style>
