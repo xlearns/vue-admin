@@ -1,5 +1,8 @@
 {
-  test: {
-    hello: "hello world!"
+  login: {
+    title: "login"
+  },
+  register: {
+    title: "register"
   }
 }

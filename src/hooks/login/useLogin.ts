@@ -5,9 +5,18 @@ const ruleForm = ref({
 });
 // 是否记住密码
 const passkeep = ref(false);
+// 当前页面
+const currentPage = ref(1);
 export const useLogin = () => {
+  function onLogin() {}
+  function onHandle(index: number) {
+    console.log(index);
+  }
   return {
+    onHandle,
+    onLogin,
     passkeep,
-    ruleForm
+    ruleForm,
+    currentPage
   };
 };

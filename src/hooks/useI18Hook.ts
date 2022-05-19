@@ -1,14 +1,13 @@
-import { type App, watchEffect } from "vue";
+import { watchEffect } from "vue";
 import { type I18n, createI18n } from "vue-i18n/index";
 import { useStorage } from "@vueuse/core";
+// element-plus国际化
+import enLocale from "element-plus/lib/locale/lang/en";
+import zhLocale from "element-plus/lib/locale/lang/zh-cn";
 
 const state = useStorage("locale", {
   locale: "zh"
 });
-
-// element-plus国际化
-import enLocale from "element-plus/lib/locale/lang/en";
-import zhLocale from "element-plus/lib/locale/lang/zh-cn";
 
 // 自定义国际化
 function cumtosI18n(prefix = "zh-CN") {
@@ -23,7 +22,7 @@ function cumtosI18n(prefix = "zh-CN") {
   )[prefix];
 }
 
-export const localesConfigs = {
+const localesConfigs = {
   zh: {
     ...cumtosI18n("zh-CN"),
     ...zhLocale
@@ -35,16 +34,17 @@ export const localesConfigs = {
 };
 
 const i18n: I18n = createI18n({
-  legacy: false, // Composition API 模式
+  // legacy: false, // Composition API 模式
   locale: state.value?.locale ?? "zh",
   fallbackLocale: "en",
   messages: localesConfigs
 });
 
-// watchEffect(() => {
-//   i18n.global.locale = state.value?.locale ?? "zh";
-// });
-
-export function useI18n(app: App) {
-  app.use(i18n);
-}
+watchEffect(() => {
+  i18n.global.locale = state.value?.locale ?? "zh";
+});
+export const useI18Hook = () => {
+  return {
+    i18n
+  };
+};
