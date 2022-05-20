@@ -2,13 +2,6 @@
 [data-theme="dark"] {
   filter: invert(0.9) hue-rotate(180deg);
 
-  #mse,
-  img,
-  .icon-svg,
-  .login-container {
-    filter: invert(1) hue-rotate(180deg);
-  }
-
   // element plus
   .el-radio-button__original-radio:checked + .el-radio-button__inner,
   .el-image-viewer__close,
