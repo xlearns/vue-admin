@@ -1,4 +1,10 @@
 import { ref } from "vue";
+import { usePermission } from "@/hooks/usePermission";
+import { router } from "@/router";
+import { useUserStore } from "@/stores/modules/user";
+const { changeRole } = usePermission();
+const userStore = useUserStore();
+
 const ruleForm = ref({
   username: "admin",
   password: "admin"
@@ -8,7 +14,11 @@ const passkeep = ref(false);
 // 当前页面
 const currentPage = ref(1);
 export const useLogin = () => {
-  function onLogin() {}
+  function onLogin() {
+    userStore.setToken("test");
+    changeRole("test");
+    router.push("/");
+  }
   function onHandle(index: number) {
     console.log(index);
   }

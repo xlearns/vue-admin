@@ -1,18 +1,22 @@
+import PageEnum from "@/enums/pageEnum";
 import { RoleEnum } from "@/enums/roleEnum";
 const homeRouter = [
   {
-    path: "/welcome",
-    name: "welcome",
-    component: () => import("@/views/welcome.vue"),
+    path: "/",
+    name: "Root",
+    component: () => import("@/layout/index.vue"),
+    redirect: PageEnum.BASE_HOME,
     meta: {
-      title: "hello",
-      roles: [RoleEnum.SUPER]
+      title: "root"
     },
     children: [
       {
-        path: "test",
-        name: "test",
-        component: () => import("@/views/test.vue")
+        path: "/welcome",
+        name: "welcome",
+        component: () => import("@/views/welcome.vue"),
+        meta: {
+          title: "welcome"
+        }
       }
     ]
   }

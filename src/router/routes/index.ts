@@ -15,16 +15,6 @@ Object.keys(modules).forEach(key => {
 // addRouter动态加入路由
 export const asyncRoutes = [...routeModuleList];
 
-// 根目录
-export const RootRoute: AppRouteModule = {
-  path: "/",
-  name: "Root",
-  redirect: PageEnum.BASE_HOME,
-  meta: {
-    title: "root"
-  }
-};
-
 // 登录
 export const LoginRoute: AppRouteModule = {
   path: "/login",
@@ -35,4 +25,4 @@ export const LoginRoute: AppRouteModule = {
   }
 };
 
-export const basicRoutes = [LoginRoute, RootRoute, errorRouter];
+export const basicRoutes = [LoginRoute, errorRouter];
