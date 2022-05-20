@@ -5,15 +5,16 @@ import { useLogin } from "@/hooks/login/useLogin";
 import Motion from "./component/Motion.vue";
 import LoginForm from "./component/LoginForm.vue";
 import RegisterForm from "./component/RegisterForm.vue";
-import { AppLocalePicker } from "@/components/application";
+import { AppLocalePicker, AppDarkModeToggle } from "@/components/application";
 const { currentPage } = useLogin();
 let { t } = useI18n();
 </script>
 <template>
-  <AppLocalePicker class="absolute top-3 right-7" />
+  <AppDarkModeToggle class="absolute top-3 right-12" />
+  <AppLocalePicker class="absolute top-4 right-4" />
   <img :src="bg" class="<lg:hidden fixed h-full left-0 bottom-0 -z-1" />
   <div
-    class="<xl:gap-9rem <lg:grid-cols-1 w-full h-full grid grid-cols-[1fr,1fr] gap-18rem px-2rem"
+    class="bg <xl:gap-9rem <lg:grid-cols-1 w-full h-full grid grid-cols-[1fr,1fr] gap-18rem px-2rem"
   >
     <div class="<lg:hidden flex justify-end items-center">
       <Motion>
@@ -34,3 +35,6 @@ let { t } = useI18n();
     </div>
   </div>
 </template>
+<style scoped>
+@import "@/style/login.scss";
+</style>
