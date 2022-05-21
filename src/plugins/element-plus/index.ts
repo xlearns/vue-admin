@@ -13,6 +13,7 @@ import {
   ElSpace,
   ElDivider,
   ElCard,
+  ElContainer,
   ElDropdown,
   ElDialog,
   ElMenu,
@@ -59,6 +60,10 @@ import {
   ElPopconfirm,
   ElCheckbox,
   ElCheckboxGroup,
+  ElAside,
+  ElHeader,
+  ElMain,
+  ElFooter,
   // 指令
   ElLoading,
   ElInfiniteScroll
@@ -77,6 +82,7 @@ const components = [
   ElSubMenu,
   ElButton,
   ElCol,
+  ElContainer,
   ElRow,
   ElSpace,
   ElDivider,
@@ -126,7 +132,11 @@ const components = [
   ElTimelineItem,
   ElResult,
   ElSteps,
-  ElStep
+  ElStep,
+  ElAside,
+  ElHeader,
+  ElMain,
+  ElFooter
 ];
 
 export function useElementPlus(app: App) {

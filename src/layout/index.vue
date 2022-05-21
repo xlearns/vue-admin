@@ -1,8 +1,27 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import LayoutSideBar from "./sider/index.vue";
+import LayoutHeader from "./header/index.vue";
+import LayoutContent from "./content/index.vue";
+import LayoutFooter from "./footer/index.vue";
+import LayoutMultipleHeader from "./header/MultipleHeader.vue";
+import { computed } from "vue";
+const layoutClass = computed(() => {
+  return "";
+});
+</script>
 
 <template>
-  layout
-  <router-view />
+  <el-container class="h-full">
+    <LayoutHeader v-if="false" />
+    <el-container :class="[layoutClass]">
+      <LayoutSideBar />
+      <el-container direction="vertical">
+        <LayoutMultipleHeader />
+        <LayoutContent />
+        <LayoutFooter />
+      </el-container>
+    </el-container>
+  </el-container>
 </template>
 
 <style scoped></style>
