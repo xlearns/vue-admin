@@ -21,6 +21,7 @@
     nav: "Nav Mode",
     theme: "theme",
     color: "subject color",
-    show: "tag show"
+    show: "tag show",
+    fullScreen: "full screen"
   }
 }

@@ -4,6 +4,7 @@ import Settings from "./component/Config.vue";
 import AppFull from "./component/AppFull.vue";
 import Notice from "./component/Notice.vue";
 import MenuEvent from "./component/MenuEvent.vue";
+import MenuCrumb from "./component/MenuCrumb.vue";
 import { useTheme } from "@/hooks/useTheme";
 import { AppLocalePicker } from "@/components/application";
 import { useMenuSetting } from "@/hooks/useMenuSetting";
@@ -20,7 +21,10 @@ let { navTheme } = useTheme();
     <LayoutSideBar mode="horizontal" v-if="navTheme == 1" />
     <div class="w-full flex justify-between">
       <div>
-        <MenuEvent v-if="navTheme == 0" />
+        <div v-if="navTheme == 0" class="flex items-center">
+          <MenuEvent class="mr-2" />
+          <MenuCrumb />
+        </div>
       </div>
       <div class="flex justify-end">
         <Notice class="mr-5" />
