@@ -29,11 +29,20 @@ const menuTheme = useStorage("menuTheme", "default");
 
 // 顶栏主题
 const headerTheme = useStorage("headerTheme", "default");
+
+// 导航栏模式
+const navTheme = useStorage("navTheme", 0);
+
 export const useTheme = () => {
+  function changeNavTheme(num: number) {
+    navTheme.value = num;
+  }
   return {
+    changeNavTheme,
     themeColors,
     systemTheme,
     menuTheme,
-    headerTheme
+    headerTheme,
+    navTheme
   };
 };

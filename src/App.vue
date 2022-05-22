@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import { computed, watchEffect } from "vue";
 import { ElConfigProvider } from "element-plus";
 import zhCn from "element-plus/lib/locale/lang/zh-cn";
 import en from "element-plus/lib/locale/lang/en";
 import { useStorage } from "@vueuse/core";
-import { computed } from "vue";
 
 const state = useStorage("locale", {
   locale: "zh"

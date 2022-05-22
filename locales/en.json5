@@ -14,5 +14,11 @@
     title: "register",
     username: "username",
     password: "password"
+  },
+  settings: {
+    title: "Project configuration",
+    logout: " Clear the cache and return to the login ",
+    nav: "Navigation mode",
+    theme: "theme"
   }
 }

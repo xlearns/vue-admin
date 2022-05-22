@@ -36,5 +36,5 @@ let { t } = useI18n();
   </div>
 </template>
 <style scoped>
-@import "@/style/login.scss";
+@import "./index.scss";
 </style>

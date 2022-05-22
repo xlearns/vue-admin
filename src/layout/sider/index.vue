@@ -4,7 +4,7 @@ const { getMenuWidth } = useMenuSetting();
 </script>
 
 <template>
-  <el-aside :width="getMenuWidth">Aside</el-aside>
+  <el-aside :width="getMenuWidth" class="bg-[red]">Aside</el-aside>
 </template>
 
 <style scoped></style>

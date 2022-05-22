@@ -14,5 +14,11 @@
     title: "注册",
     username: "账号",
     password: "密码"
+  },
+  settings: {
+    title: "项目配置",
+    logout: " 清空缓存并返回登录页 ",
+    nav: "导航栏模式",
+    theme: "主题"
   }
 }

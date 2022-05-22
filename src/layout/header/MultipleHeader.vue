@@ -1,7 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Settings from "./component/Config.vue";
+</script>
 
 <template>
-  <el-header>2head</el-header>
+  <el-header class="bg-[blue] flex items-center justify-end">
+    <Settings />
+  </el-header>
 </template>
-
-<style scoped></style>
+<style scoped>
+@import "./index.scss";
+</style>

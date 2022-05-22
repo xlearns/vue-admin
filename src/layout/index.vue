@@ -4,7 +4,11 @@ import LayoutHeader from "./header/index.vue";
 import LayoutContent from "./content/index.vue";
 import LayoutFooter from "./footer/index.vue";
 import LayoutMultipleHeader from "./header/MultipleHeader.vue";
+import { useTheme } from "@/hooks/useTheme";
 import { computed } from "vue";
+
+let { navTheme } = useTheme();
+
 const layoutClass = computed(() => {
   return "";
 });
@@ -14,7 +18,7 @@ const layoutClass = computed(() => {
   <el-container class="h-full">
     <LayoutHeader v-if="false" />
     <el-container :class="[layoutClass]">
-      <LayoutSideBar />
+      <LayoutSideBar v-if="navTheme == 0" />
       <el-container direction="vertical">
         <LayoutMultipleHeader />
         <LayoutContent />

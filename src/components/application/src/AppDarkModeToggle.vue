@@ -1,23 +1,15 @@
 <script setup lang="ts">
 import { watch, watchEffect, ref } from "vue";
-import { useDark, useToggle } from "@vueuse/core";
-let val = ref(true);
-const isDark = useDark();
-const toggleDark = useToggle(isDark);
-const body = document.documentElement as HTMLElement;
+import { useDarkModel } from "@/hooks/useDarkModel";
+
+let { isDark, change } = useDarkModel();
+let val = ref(isDark.value);
 watch(
   () => val.value,
   () => {
-    toggleDark();
+    change();
   }
 );
-watchEffect(() => {
-  if (isDark.value) {
-    body.setAttribute("data-theme", "dark");
-  } else {
-    body.setAttribute("data-theme", "");
-  }
-});
 </script>
 
 <template>
