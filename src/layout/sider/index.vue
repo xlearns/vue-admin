@@ -13,14 +13,19 @@ defineProps({
 });
 const { getMenuWidth } = useMenuSetting();
 const menuWidth = computed(() => {
-  if (navTheme.value == 0) return getMenuWidth + "px";
+  if (navTheme.value == 0) return getMenuWidth.value;
   return "50%";
 });
 </script>
 
 <template>
   <el-aside :width="menuWidth" class="h-full">
-    <el-menu class="h-full overflow-hidden" :mode="mode">
+    <el-menu
+      class="h-full overflow-hidden"
+      :mode="mode"
+      text-color="#fff"
+      background-color="#001529"
+    >
       <el-menu-item index="1">Processing Center</el-menu-item>
       <el-sub-menu index="2">
         <template #title>Workspace</template>

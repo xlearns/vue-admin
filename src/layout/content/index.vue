@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <el-main class="bg-black">
+  <el-main>
     <RouterView> </RouterView>
   </el-main>
 </template>
