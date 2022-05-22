@@ -13,9 +13,11 @@ function changeLocale(val: string) {
 </script>
 
 <template>
-  <div>
+  <div class="flex items-center">
     <el-dropdown trigger="click">
-      <language class="w-24px h-24px cursor-pointer" />
+      <div class="w-[16px] h-[16px] cursor-pointer">
+        <language />
+      </div>
       <template #dropdown>
         <el-dropdown-menu>
           <el-dropdown-item @click="changeLocale('zh')"

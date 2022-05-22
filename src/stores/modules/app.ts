@@ -17,11 +17,23 @@ export const useAppStore = defineStore({
     },
     getMenuWidth() {
       return this.getMenuSetting.menuWidth;
+    },
+    getNavColor() {
+      return this.getMenuSetting.navColor;
+    },
+    getMenuCollapse() {
+      return this.getMenuSetting.menuCollapse;
     }
   },
   actions: {
     setMenuWidth(val: number) {
       ms.value.menuWidth = val;
+    },
+    setMenuCollapse(obj: boolean) {
+      ms.value.menuCollapse = obj;
+    },
+    setNavColor(obj: { bg: string; text: string }) {
+      ms.value.navColor = obj;
     }
   }
 });

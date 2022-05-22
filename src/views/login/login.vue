@@ -10,7 +10,7 @@ const { currentPage } = useLogin();
 let { t } = useI18n();
 </script>
 <template>
-  <AppDarkModeToggle class="absolute top-3 right-12" />
+  <AppDarkModeToggle class="absolute top-2 right-12" />
   <AppLocalePicker class="absolute top-4 right-4" />
   <img :src="bg" class="<lg:hidden fixed h-full left-0 bottom-0 -z-1" />
   <div

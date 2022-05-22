@@ -18,7 +18,9 @@
   settings: {
     title: "Project configuration",
     logout: " Clear the cache and return to the login ",
-    nav: "Navigation mode",
-    theme: "theme"
+    nav: "Nav Mode",
+    theme: "theme",
+    color: "subject color",
+    show: "tag show"
   }
 }

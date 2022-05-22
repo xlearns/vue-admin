@@ -1,6 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@iconify/vue': ^3.2.1
   '@intlify/vite-plugin-vue-i18n': ^3.4.0
   '@types/node': ^16.11.27
   '@typescript-eslint/eslint-plugin': ^5.20.0
@@ -55,6 +56,7 @@ dependencies:
   vue-router: 4.0.14_vue@3.2.33
 
 devDependencies:
+  '@iconify/vue': 3.2.1_vue@3.2.33
   '@intlify/vite-plugin-vue-i18n': 3.4.0_vite@2.9.5+vue-i18n@9.1.10
   '@types/node': 16.11.27
   '@typescript-eslint/eslint-plugin': 5.20.0_b9ac9b5656ce5dffade639fcf5e491bf
@@ -438,6 +440,14 @@ packages:
 
   /@humanwhocodes/object-schema/1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
+    dev: true
+
+  /@iconify/vue/3.2.1_vue@3.2.33:
+    resolution: {integrity: sha512-c4R6ZgFo1JrJ8aPMMgOPgfU7lBswihMGR+yWe/P4ZukC3kTkeT4+lkt9Pc/itVFMkwva/S/7u9YofmYv57fnNQ==}
+    peerDependencies:
+      vue: 3.x
+    dependencies:
+      vue: 3.2.33
     dev: true
 
   /@intlify/bundle-utils/2.2.2_vue-i18n@9.1.10:
