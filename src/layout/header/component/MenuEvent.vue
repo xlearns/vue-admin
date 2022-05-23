@@ -29,28 +29,30 @@ function collapse() {
 </script>
 
 <template>
-  <div
-    class="w-[16px] h-[16px] cursor-pointer"
-    :style="{ color: navTheme == 1 ? getNavColor.text : '#000' }"
-    @click="collapse"
-  >
-    <Icon
-      width="100%"
-      height="100%"
-      icon="quill:hamburger-sidebar"
-      :horizontalFlip="true"
-      :verticalFlip="true"
-    />
-  </div>
-  <div class="mini-menu">
-    <el-drawer
-      direction="ltr"
-      v-model="drawer"
-      :with-header="false"
-      size="210px"
+  <div>
+    <div
+      class="w-[16px] h-[16px] cursor-pointer"
+      :style="{ color: navTheme == 1 ? getNavColor.text : '#000' }"
+      @click="collapse"
     >
-      <Menu mode="vertical" />
-    </el-drawer>
+      <Icon
+        width="100%"
+        height="100%"
+        icon="quill:hamburger-sidebar"
+        :horizontalFlip="true"
+        :verticalFlip="true"
+      />
+    </div>
+    <div class="mini-menu">
+      <el-drawer
+        direction="ltr"
+        v-model="drawer"
+        :with-header="false"
+        size="210px"
+      >
+        <Menu mode="vertical" />
+      </el-drawer>
+    </div>
   </div>
 </template>
 
