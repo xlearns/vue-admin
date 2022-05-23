@@ -6,9 +6,10 @@ import LayoutFooter from "./footer/index.vue";
 import LayoutMultipleHeader from "./header/MultipleHeader.vue";
 import { useTheme } from "@/hooks/useTheme";
 import { computed } from "vue";
+import { useMenuSetting } from "@/hooks/useMenuSetting";
 
 let { navTheme } = useTheme();
-
+let { getSiderShow } = useMenuSetting();
 const layoutClass = computed(() => {
   return "";
 });
@@ -18,7 +19,7 @@ const layoutClass = computed(() => {
   <el-container class="h-full">
     <LayoutHeader v-if="false" />
     <el-container :class="[layoutClass]">
-      <LayoutSideBar v-if="navTheme == 0" />
+      <LayoutSideBar v-if="navTheme == 0 && getSiderShow" />
       <el-container direction="vertical">
         <LayoutMultipleHeader />
         <LayoutContent />

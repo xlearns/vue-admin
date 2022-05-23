@@ -2,15 +2,37 @@
 import { Icon } from "@iconify/vue";
 import { useTheme } from "@/hooks/useTheme";
 import { useMenuSetting } from "@/hooks/useMenuSetting";
-const { getNavColor, setMenuCollapse, getMenuCollapse } = useMenuSetting();
+import { ref, watchEffect } from "vue";
+import Menu from "@/layout/sider/components/menu.vue";
+const {
+  isMinScreen,
+  getSiderShow,
+  getNavColor,
+  setMenuCollapse,
+  getMenuCollapse
+} = useMenuSetting();
 let { navTheme } = useTheme();
+let drawer = ref(false);
+watchEffect(() => {
+  if (!isMinScreen.value) {
+    drawer.value = false;
+  }
+});
+function collapse() {
+  if (getSiderShow.value) {
+    setMenuCollapse(!getMenuCollapse.value);
+  } else {
+    setMenuCollapse(false);
+    drawer.value = true;
+  }
+}
 </script>
 
 <template>
   <div
     class="w-[16px] h-[16px] cursor-pointer"
     :style="{ color: navTheme == 1 ? getNavColor.text : '#000' }"
-    @click="setMenuCollapse(!getMenuCollapse)"
+    @click="collapse"
   >
     <Icon
       width="100%"
@@ -20,6 +42,28 @@ let { navTheme } = useTheme();
       :verticalFlip="true"
     />
   </div>
+  <div class="mini-menu">
+    <el-drawer
+      direction="ltr"
+      v-model="drawer"
+      :with-header="false"
+      size="210px"
+    >
+      <Menu mode="vertical" />
+    </el-drawer>
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.mini-menu :deep(.el-drawer__body) {
+  padding: 0;
+}
+
+.mini-menu :deep(.el-drawer) {
+  transition: none;
+}
+
+.mini-menu :deep(.el-menu) {
+  border: none;
+}
+</style>

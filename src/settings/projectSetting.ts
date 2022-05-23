@@ -6,3 +6,6 @@ export const menuSetting = {
     text: "#fff"
   }
 };
+export const sider = {
+  show: true
+};

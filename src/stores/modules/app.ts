@@ -2,18 +2,24 @@ import { defineStore } from "pinia";
 import { store } from "@/stores";
 import { useStorage } from "@vueuse/core";
 import { PROJ_CFG_KEY } from "@/enums/cacheEnum";
-import { menuSetting } from "@/settings/projectSetting";
+import * as project from "@/settings/projectSetting";
 
-const ms = useStorage(PROJ_CFG_KEY, menuSetting);
+const data = useStorage(PROJ_CFG_KEY, { ...project });
 
 export const useAppStore = defineStore({
   id: "app",
   state: () => ({
-    getProjectConfig: ms
+    getProjectConfig: data
   }),
   getters: {
+    getSiderSetting() {
+      return this.getProjectConfig.sider;
+    },
     getMenuSetting() {
-      return this.getProjectConfig;
+      return this.getProjectConfig.menuSetting;
+    },
+    getSiderShow() {
+      return this.getSiderSetting.show;
     },
     getMenuWidth() {
       return this.getMenuSetting.menuWidth;
@@ -26,14 +32,23 @@ export const useAppStore = defineStore({
     }
   },
   actions: {
+    setMenu(key: string, val: any) {
+      data.value.menuSetting[key] = val;
+    },
+    setSider(key: string, val: any) {
+      data.value.sider[key] = val;
+    },
     setMenuWidth(val: number) {
-      ms.value.menuWidth = val;
+      this.setMenu("menuWidth", val);
     },
     setMenuCollapse(obj: boolean) {
-      ms.value.menuCollapse = obj;
+      this.setMenu("menuCollapse", obj);
     },
     setNavColor(obj: { bg: string; text: string }) {
-      ms.value.navColor = obj;
+      this.setMenu("navColor", obj);
+    },
+    setSiderShow(obj: boolean) {
+      this.setSider("show", obj);
     }
   }
 });
