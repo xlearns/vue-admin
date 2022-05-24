@@ -19,10 +19,15 @@ export const useLogin = () => {
     changeRole("test");
     router.push("/");
   }
+  function logout() {
+    localStorage.clear();
+    location.reload();
+  }
   function onHandle(index: number) {
     console.log(index);
   }
   return {
+    logout,
     onHandle,
     onLogin,
     passkeep,

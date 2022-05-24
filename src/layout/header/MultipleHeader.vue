@@ -3,6 +3,7 @@ import LayoutSideBar from "../sider/index.vue";
 import Settings from "./component/Config.vue";
 import AppFull from "./component/AppFull.vue";
 import Notice from "./component/Notice.vue";
+import User from "./component/User.vue";
 import MenuEvent from "./component/MenuEvent.vue";
 import MenuCrumb from "./component/MenuCrumb.vue";
 import { useTheme } from "@/hooks/useTheme";
@@ -30,6 +31,7 @@ let { navTheme } = useTheme();
         <Notice />
         <AppFull />
         <AppLocalePicker />
+        <User />
         <Settings />
       </div>
     </div>

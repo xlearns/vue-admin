@@ -22,7 +22,7 @@ let { navTheme } = useTheme();
     class="box"
     :style="{ color: navTheme == 1 ? getNavColor.text : '#000' }"
   >
-    <el-dropdown ref="dropdown1" trigger="click">
+    <el-dropdown trigger="click">
       <span class="el-dropdown-link">
         <el-badge :value="num">
           <Icon class="w-[16px] h-[16px]" icon="carbon:notification" />

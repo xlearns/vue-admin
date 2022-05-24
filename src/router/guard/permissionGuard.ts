@@ -21,10 +21,6 @@ export function createPermissionGuard(router: Router) {
       return;
     }
     if (!token) {
-      // if (to.meta.ignoreAuth) {
-      //   next();
-      //   return;
-      // }
       const redirectData: {
         path: string;
         replace: boolean;
