@@ -13,7 +13,7 @@ const { toggle } = useFullscreen();
 
 <template>
   <div
-    class="w-[16px] h-[16px] cursor-pointer"
+    class="box"
     @click="toggle"
     :style="{ color: navTheme == 1 ? getNavColor.text : '#000' }"
   >
@@ -23,9 +23,11 @@ const { toggle } = useFullscreen();
       :content="t('settings.fullScreen')"
       placement="bottom"
     >
-      <Icon icon="ep:full-screen" />
+      <Icon class="w-[16px] h-[16px]" icon="ep:full-screen" />
     </el-tooltip>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+@import "./index.scss";
+</style>

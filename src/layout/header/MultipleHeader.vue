@@ -19,17 +19,17 @@ let { navTheme } = useTheme();
     :style="{ background: navTheme == 0 ? '#fff' : getNavColor.bg }"
   >
     <LayoutSideBar mode="horizontal" v-if="navTheme == 1" />
-    <div class="w-full flex justify-between">
+    <div class="w-full flex justify-between h-full items-center">
       <div>
         <div v-if="navTheme == 0" class="flex items-center">
           <MenuEvent class="mr-2" />
           <MenuCrumb />
         </div>
       </div>
-      <div class="flex justify-end">
-        <Notice class="mr-5" />
-        <AppFull class="mr-5" />
-        <AppLocalePicker class="mr-5" />
+      <div class="flex justify-end items-center h-full">
+        <Notice />
+        <AppFull />
+        <AppLocalePicker />
         <Settings />
       </div>
     </div>

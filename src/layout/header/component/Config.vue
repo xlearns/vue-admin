@@ -20,10 +20,10 @@ function danger() {
 
 <template>
   <div
-    class="w-[16px] h-[16px] cursor-pointer"
+    class="box"
     :style="{ color: navTheme == 1 ? getNavColor.text : '#000' }"
   >
-    <SettingSvg @click="drawer = !drawer" />
+    <SettingSvg class="w-[16px] h-[16px]" @click="drawer = !drawer" />
   </div>
   <el-drawer v-model="drawer" size="315px" :title="t('settings.title')">
     <el-divider content-position="center">{{ t("settings.theme") }}</el-divider>
@@ -40,4 +40,6 @@ function danger() {
   </el-drawer>
 </template>
 
-<style scoped></style>
+<style scoped>
+@import "./index.scss";
+</style>

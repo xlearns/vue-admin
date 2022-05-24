@@ -13,10 +13,10 @@ function changeLocale(val: string) {
 </script>
 
 <template>
-  <div class="flex items-center">
+  <div class="cursor-pointer flex items-center px-2 h-full">
     <el-dropdown trigger="click">
-      <div class="w-[16px] h-[16px] cursor-pointer">
-        <language />
+      <div class="cursor-pointer">
+        <language class="w-[16px] h-[16px]" />
       </div>
       <template #dropdown>
         <el-dropdown-menu>
