@@ -20,6 +20,8 @@ export const useLogin = () => {
     router.push("/");
   }
   function logout() {
+    // userStore.setToken("");
+    // router.push("/login");
     localStorage.clear();
     location.reload();
   }

@@ -34,10 +34,17 @@ const headerTheme = useStorage("headerTheme", "default");
 const navTheme = useStorage("navTheme", 0);
 
 export const useTheme = () => {
+  function clear() {
+    systemTheme.value = "default";
+    menuTheme.value = "default";
+    headerTheme.value = "default";
+    navTheme.value = 0;
+  }
   function changeNavTheme(num: number) {
     navTheme.value = num;
   }
   return {
+    clear,
     changeNavTheme,
     themeColors,
     systemTheme,

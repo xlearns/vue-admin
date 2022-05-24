@@ -9,7 +9,8 @@ export const useUserStore = defineStore({
   id: "user",
   state: () => ({
     // roleList
-    roleList: []
+    roleList: [],
+    token: ""
   }),
   getters: {
     getRoleList(): string[] | number[] {

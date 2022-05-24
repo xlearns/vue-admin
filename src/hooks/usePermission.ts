@@ -36,7 +36,12 @@ export function usePermission() {
     userStore.setRoleList(roles);
     await resume();
   }
+  function clear() {
+    userStore.setRoleList([]);
+    resume();
+  }
   return {
+    clear,
     changeRole,
     refresh,
     resume,
