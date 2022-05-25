@@ -10,8 +10,8 @@ const { currentPage } = useLogin();
 let { t } = useI18n();
 </script>
 <template>
-  <AppDarkModeToggle class="absolute top-2 right-12" />
-  <AppLocalePicker class="absolute top-4 right-4" />
+  <AppDarkModeToggle class="absolute top-2 right-8" />
+  <AppLocalePicker class="w-16px h-16px absolute top-4 right-4" />
   <img :src="bg" class="<lg:hidden fixed h-full left-0 bottom-0 -z-1" />
   <div
     class="bg <xl:gap-9rem <lg:grid-cols-1 w-full h-full grid grid-cols-[1fr,1fr] gap-18rem px-2rem"

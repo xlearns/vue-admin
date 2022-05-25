@@ -6,6 +6,7 @@ import Notice from "./component/Notice.vue";
 import User from "./component/User.vue";
 import MenuEvent from "./component/MenuEvent.vue";
 import MenuCrumb from "./component/MenuCrumb.vue";
+import MenuNav from "./component/MenuNav.vue";
 import { useTheme } from "@/hooks/useTheme";
 import { AppLocalePicker } from "@/components/application";
 import { useMenuSetting } from "@/hooks/useMenuSetting";
@@ -36,6 +37,7 @@ let { navTheme } = useTheme();
       </div>
     </div>
   </el-header>
+  <MenuNav />
 </template>
 <style scoped>
 @import "./index.scss";

@@ -2,6 +2,7 @@
   "name": "vue-admin",
   "version": "0.0.0",
   "scripts": {
+    "test": "vitest src/",
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "lint:eslint": "eslint --cache --max-warnings 0  \"{src,mock}/**/*.{vue,ts,tsx}\" --fix",
@@ -53,6 +54,7 @@
     "vite-plugin-html": "^3.2.0",
     "vite-plugin-windicss": "^1.8.4",
     "vite-svg-loader": "^3.2.0",
+    "vitest": "^0.12.9",
     "vue-tsc": "^0.34.7",
     "windicss": "^3.5.1"
   }
