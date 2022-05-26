@@ -1,4 +1,4 @@
-import { ref } from "vue";
+import { ref, computed } from "vue";
 
 const test = Array.from({ length: 10 }, (v, i) => {
   return {
@@ -13,7 +13,16 @@ const current = ref();
 const data = ref([]);
 const type = ref();
 data.value = test;
-
+const ableRight = computed(() => {
+  return data.value.some((v, i) => {
+    return i < current.value;
+  });
+});
+const ableLeft = computed(() => {
+  return data.value.some((v, i) => {
+    return i > current.value;
+  });
+});
 export function useMenuNav() {
   function close(index: number) {
     data.value = data.value.filter((item, i) => i !== index);
@@ -48,6 +57,8 @@ export function useMenuNav() {
   }
 
   return {
+    ableRight,
+    ableLeft,
     type,
     show,
     data,

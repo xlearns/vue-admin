@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, ref, watch } from "vue";
 import { useMenuNav } from "@/hooks/useMenuNav";
-
-const { activeKey, current, show } = useMenuNav();
+import { Icon } from "@iconify/vue";
+const { activeKey, current, show, ableRight, ableLeft } = useMenuNav();
 
 const context = ref();
 watch(
@@ -45,6 +45,20 @@ function fn(type, bool: boolean) {
 const isdisable = computed(() => {
   return activeKey.value == current.value;
 });
+
+function leftRight(index) {
+  let res = !isdisable.value;
+
+  if (!res && index == 2) {
+    res = !ableRight.value;
+  } else if (!res && index == 3) {
+    res = !ableLeft.value;
+  } else if (index == 5) {
+    res = false;
+  }
+
+  return res;
+}
 </script>
 
 <template>
@@ -52,9 +66,16 @@ const isdisable = computed(() => {
     <context-menu-item
       v-for="(item, index) in data"
       :key="index"
-      :disabled="!isdisable && index != 5"
+      :disabled="leftRight(index)"
       @click="fn(item.key, !isdisable && index != 5)"
-      >{{ item.name }}</context-menu-item
+    >
+      <Icon icon="foundation:refresh" v-if="index == 0" />
+      <Icon icon="ci:close-small" v-if="index == 1" />
+      <Icon icon="bx:arrow-to-left" v-if="index == 2" />
+      <Icon icon="bx:arrow-to-right" v-if="index == 3" />
+      <Icon icon="codicon:close-all" v-if="index == 4" />
+      <Icon icon="ant-design:minus-outlined" v-if="index == 5" />
+      {{ item.name }}</context-menu-item
     >
   </context-menu>
 </template>
