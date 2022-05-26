@@ -22,7 +22,8 @@
     "pinia": "^2.0.13",
     "vue": "^3.2.33",
     "vue-i18n": "^9.1.10",
-    "vue-router": "^4.0.14"
+    "vue-router": "^4.0.14",
+    "vue3-contextmenu": "^0.2.12"
   },
   "devDependencies": {
     "@iconify/vue": "^3.2.1",

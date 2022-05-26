@@ -11,12 +11,16 @@ import "./style/index.scss";
 import { setupRouterGuard } from "@/router/guard";
 // 国际化
 import { useI18n } from "./plugins/i18n";
+//contentmenu
+import contextmenu from "vue3-contextmenu";
+import "vue3-contextmenu/dist/vue3-contextmenu.css";
 
 const app = createApp(App);
 
 Object.keys(directives).forEach(name => app.directive(name, directives[name]));
 app.use(MotionPlugin);
 app.use(createPinia());
+app.use(contextmenu);
 app.use(router);
 setupRouterGuard(router);
 app.use(useElementPlus);

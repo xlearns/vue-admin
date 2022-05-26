@@ -42,6 +42,7 @@ specifiers:
   vue-i18n: ^9.1.10
   vue-router: ^4.0.14
   vue-tsc: ^0.34.7
+  vue3-contextmenu: ^0.2.12
   windicss: ^3.5.1
 
 dependencies:
@@ -55,6 +56,7 @@ dependencies:
   vue: 3.2.33
   vue-i18n: 9.1.10_vue@3.2.33
   vue-router: 4.0.14_vue@3.2.33
+  vue3-contextmenu: 0.2.12
 
 devDependencies:
   '@iconify/vue': 3.2.1_vue@3.2.33
@@ -1353,6 +1355,11 @@ packages:
       safe-buffer: 5.1.2
     dev: true
 
+  /core-js/3.22.7:
+    resolution: {integrity: sha512-Jt8SReuDKVNZnZEzyEQT5eK6T2RRCXkfTq7Lo09kpm+fHjgGewSbNjV+Wt4yZMhPDdzz2x1ulI5z/w4nxpBseg==}
+    requiresBuild: true
+    dev: false
+
   /cosmiconfig/7.0.1:
     resolution: {integrity: sha512-a1YWNUV2HwGimB7dU2s1wUMurNKjpx60HxBB6xUM8Re+2s1g1IIfJvFR0/iCF+XHdE0GMTKTuLR32UQff4TEyQ==}
     engines: {node: '>=10'}
@@ -2607,6 +2614,10 @@ packages:
       kind-of: 6.0.3
     dev: true
 
+  /mitt/2.1.0:
+    resolution: {integrity: sha512-ILj2TpLiysu2wkBbWjAmww7TkZb65aiQO+DkVdUTBpBXq+MHYiETENkKFMtsJZX1Lf4pe4QOrTSjIfUwN5lRdg==}
+    dev: false
+
   /ms/2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
     dev: true
@@ -3700,6 +3711,14 @@ packages:
       '@vue/runtime-dom': 3.2.33
       '@vue/server-renderer': 3.2.33_vue@3.2.33
       '@vue/shared': 3.2.33
+    dev: false
+
+  /vue3-contextmenu/0.2.12:
+    resolution: {integrity: sha512-lSA+Pq4wozbf9nDmMBvz2Z2DXwGwCEeXEDsmQi+cIxc5FzPa1Ia013hv5/DQZwr4dPilNxrOXPht1u0CMXcpVw==}
+    dependencies:
+      core-js: 3.22.7
+      mitt: 2.1.0
+      vue: 3.2.33
     dev: false
 
   /webpack-sources/3.2.3:

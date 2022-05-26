@@ -23,7 +23,7 @@ const layoutClass = computed(() => {
       <el-container direction="vertical">
         <LayoutMultipleHeader />
         <LayoutContent />
-        <LayoutFooter />
+        <LayoutFooter v-if="false" />
       </el-container>
     </el-container>
   </el-container>
