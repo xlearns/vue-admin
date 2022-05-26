@@ -21,20 +21,27 @@ export function useMenuNav() {
   function contextMenuFn(t: string) {
     switch (t) {
       case "closecurrent":
+        activeKey.value = current.value;
         close(current.value);
         break;
       case "closeleft":
-        data.value = data.value.splice(current.value);
+        activeKey.value = 0;
+        data.value = data.value.filter((item, i) => {
+          return i >= current.value;
+        });
         break;
       case "closeright":
+        activeKey.value = current.value;
         data.value = data.value.filter((item, i) => {
           return i <= current.value;
         });
         break;
       case "closeall":
+        activeKey.value = -1;
         data.value = [];
         break;
       case "closeother":
+        activeKey.value = current.value;
         data.value = data.value.filter((item, i) => i === current.value);
         break;
     }

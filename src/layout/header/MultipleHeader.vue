@@ -18,7 +18,9 @@ let { navTheme } = useTheme();
   <el-header
     :class="{ 'justify-between  border-b-1': navTheme == 0 }"
     class="flex items-center border-b-1"
-    :style="{ background: navTheme == 0 ? '#fff' : getNavColor.bg }"
+    :style="{
+      background: navTheme == 0 ? '#fff' : getNavColor.bg
+    }"
   >
     <LayoutSideBar mode="horizontal" v-if="navTheme == 1" />
     <div class="w-full flex justify-between h-full items-center">

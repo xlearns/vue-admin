@@ -2,6 +2,7 @@
 import { inject } from "vue";
 import contentMenu from "@/components/contextmenu/contextMenu.vue";
 import { useMenuNav } from "@/hooks/useMenuNav";
+import { Icon } from "@iconify/vue";
 
 const emitContext = inject("emitContext") as Fn;
 const hideContext = inject("hideContext") as Fn;
@@ -51,7 +52,17 @@ function handleMouseEnter(index, type) {
       </el-tag>
     </div>
     <div class="arrow-right"></div>
-    <div class="right-button"></div>
+    <div class="right-button">
+      <div class="right-button-item">
+        <Icon icon="eva:refresh-outline" />
+      </div>
+      <div class="right-button-item">
+        <Icon icon="akar-icons:chevron-down" />
+      </div>
+      <div class="right-button-item">
+        <Icon icon="codicon:screen-full" />
+      </div>
+    </div>
   </div>
   <contentMenu @contextMenuFn="contextMenuFn" />
 </template>
@@ -82,6 +93,21 @@ function handleMouseEnter(index, type) {
   .active {
     color: #fff;
     background: #0960bd;
+  }
+
+  .right-button {
+    display: flex;
+
+    &-item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 38px;
+      border-right: 1px solid #ccc;
+      box-shadow: -5px 0 5px -6px #ccc;
+      cursor: pointer;
+    }
   }
 }
 </style>

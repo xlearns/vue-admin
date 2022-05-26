@@ -1,8 +1,8 @@
-<script setup>
-import { ref, watch } from "vue";
+<script setup lang="ts">
+import { computed, ref, watch } from "vue";
 import { useMenuNav } from "@/hooks/useMenuNav";
 
-const { current, show } = useMenuNav();
+const { activeKey, current, show } = useMenuNav();
 
 const context = ref();
 watch(
@@ -38,9 +38,13 @@ let data = [
     key: "closeall"
   }
 ];
-function fn(type) {
+function fn(type, bool: boolean) {
+  if (bool) return;
   emit("contextMenuFn", type);
 }
+const isdisable = computed(() => {
+  return activeKey.value == current.value;
+});
 </script>
 
 <template>
@@ -48,7 +52,8 @@ function fn(type) {
     <context-menu-item
       v-for="(item, index) in data"
       :key="index"
-      @click="fn(item.key)"
+      :disabled="!isdisable && index != 5"
+      @click="fn(item.key, !isdisable && index != 5)"
       >{{ item.name }}</context-menu-item
     >
   </context-menu>
