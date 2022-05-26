@@ -1,31 +1,24 @@
 <script setup lang="ts">
-import { ref, inject } from "vue";
-import { Func } from "./type";
+import { inject } from "vue";
 import contentMenu from "@/components/contextmenu/contextMenu.vue";
+import { useMenuNav } from "@/hooks/useMenuNav";
 
-const emitContext = inject("emitContext") as Func<string, { name: string }>;
+const emitContext = inject("emitContext") as Fn;
+const hideContext = inject("hideContext") as Fn;
 
-let test = Array.from({ length: 10 }, (v, i) => {
-  return {
-    name: "首页",
-    key: `home${i}`
-  };
-});
-let data = ref([]);
-let activeKey = ref(0);
-let closable = ref();
-data.value = test;
+const { data, activeKey, closable, close, current, contextMenuFn } =
+  useMenuNav();
 
+function openContextMenu(e, index) {
+  current.value = index;
+  emitContext(e, { name: "context-menu-1" });
+}
 function handleMouseEnter(index, type) {
   if (type) {
     closable.value = index;
   } else {
     closable.value = "";
   }
-}
-
-function openContextMenu(e) {
-  emitContext(e, { name: "context-menu-1" });
 }
 </script>
 
@@ -35,17 +28,24 @@ function openContextMenu(e) {
     <div class="scroll-container">
       <el-tag
         class="scroll-item mr-1"
+        :class="{ active: activeKey === -1 }"
+        @click="activeKey = -1"
+        @contextmenu.native="openContextMenu"
+        >首页
+      </el-tag>
+
+      <el-tag
+        class="scroll-item mr-1"
         :disable-transitions="true"
         :class="{ active: activeKey === index }"
         v-for="(item, index) in data"
         :key="item.key"
         @click="activeKey = index"
+        @close="close(index)"
         @mouseenter="handleMouseEnter(index, true)"
         @mouseleave="handleMouseEnter(index, false)"
-        @contextmenu="openContextMenu"
-        :closable="
-          false && index != 0 && (activeKey === index || closable === index)
-        "
+        @contextmenu="openContextMenu($event, index)"
+        :closable="activeKey === index || closable === index"
       >
         {{ item.name }}
       </el-tag>
@@ -53,7 +53,7 @@ function openContextMenu(e) {
     <div class="arrow-right"></div>
     <div class="right-button"></div>
   </div>
-  <contentMenu />
+  <contentMenu @contextMenuFn="contextMenuFn" />
 </template>
 
 <style lang="scss" scoped>
