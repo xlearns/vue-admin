@@ -7,8 +7,8 @@ export const errorRouter: AppRouteModule = {
   component: Layout,
   redirect: "/error/403",
   meta: {
-    title: "",
-    icon: "information-line"
+    title: "error",
+    icon: "bx:error-circle"
   },
   children: [
     {
@@ -37,8 +37,10 @@ export const errorRouter: AppRouteModule = {
     }
   ]
 };
+
 export const PAGE_NOT_FOUND_ROUTE = {
   path: "/:pathMatch(.*)",
   redirect: "/error/404"
 };
+
 export default errorRouter;

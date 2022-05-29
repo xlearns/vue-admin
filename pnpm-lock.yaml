@@ -18,6 +18,7 @@ specifiers:
   eslint-plugin-vue: ^8.6.0
   lodash-es: ^4.17.21
   nprogress: ^0.2.0
+  path-to-regexp: ^6.2.1
   pinia: ^2.0.13
   postcss: ^8.4.13
   postcss-html: ^1.4.1
@@ -52,6 +53,7 @@ dependencies:
   element-plus: 2.1.10_vue@3.2.33
   lodash-es: 4.17.21
   nprogress: 0.2.0
+  path-to-regexp: 6.2.1
   pinia: 2.0.13_typescript@4.6.3+vue@3.2.33
   vue: 3.2.33
   vue-i18n: 9.1.10_vue@3.2.33
@@ -2782,6 +2784,10 @@ packages:
   /path-parse/1.0.7:
     resolution: {integrity: sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==}
     dev: true
+
+  /path-to-regexp/6.2.1:
+    resolution: {integrity: sha512-JLyh7xT1kizaEvcaXOQwOc2/Yhw6KZOvPf1S8401UyLk86CU79LN3vl7ztXGm/pZ+YjoyAJ4rxmHwbkBXJX+yw==}
+    dev: false
 
   /path-type/4.0.0:
     resolution: {integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==}

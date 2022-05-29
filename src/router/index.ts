@@ -2,7 +2,7 @@ import type { RouteRecordRaw } from "vue-router";
 import type { App } from "vue";
 import { createRouter, createWebHashHistory } from "vue-router";
 
-import { basicRoutes } from "./routes";
+import { basicRoutes, RemainingRouter } from "./routes";
 
 // 白名单应该包含基本静态路由
 const WHITE_NAME_LIST: string[] = [];
@@ -20,7 +20,9 @@ getRouteNames(basicRoutes);
 
 export const router = createRouter({
   history: createWebHashHistory(import.meta.env.VITE_PUBLIC_PATH),
-  routes: basicRoutes as unknown as RouteRecordRaw[],
+  routes: [
+    ...RemainingRouter.concat(basicRoutes)
+  ] as unknown as RouteRecordRaw[],
   // 不允许尾部的斜线
   strict: true,
   // 始终滚动到顶部

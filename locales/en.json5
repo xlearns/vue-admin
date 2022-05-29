@@ -15,6 +15,10 @@
     username: "username",
     password: "password"
   },
+  menu: {
+    root: "root",
+    error: "error page"
+  },
   settings: {
     title: "Project configuration",
     logout: " Clear the cache and return to the login ",

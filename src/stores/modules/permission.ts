@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import { toRaw } from "vue";
 import { store } from "@/stores";
 import { useUserStore } from "./user";
-import { asyncRoutes } from "@/router/routes";
+import { asyncRoutes, basicRoutes } from "@/router/routes";
 
 function filter(tree, fn) {
   return tree
@@ -14,7 +14,8 @@ function filter(tree, fn) {
 export const usePermissionStore = defineStore({
   id: "permission",
   state: () => ({
-    permCodeList: []
+    permCodeList: [],
+    wholeMenus: []
   }),
   getters: {
     getPermCodeList(): string[] | number[] {
@@ -22,9 +23,15 @@ export const usePermissionStore = defineStore({
     },
     getIsDynamicAddedRoute() {
       return this.isDynamicAddedRoute;
+    },
+    getWholeMenus() {
+      return this.wholeMenus;
     }
   },
   actions: {
+    setWholeMenus(router) {
+      this.wholeMenus = [...router, ...basicRoutes];
+    },
     setDynamicAddedRoute(added: boolean) {
       this.isDynamicAddedRoute = added;
     },
@@ -49,7 +56,7 @@ export const usePermissionStore = defineStore({
       };
 
       routes = filter(asyncRoutes, routeFilter);
-
+      this.setWholeMenus(routes);
       return routes;
     }
   }

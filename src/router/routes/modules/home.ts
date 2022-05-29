@@ -7,7 +7,8 @@ const homeRouter = [
     component: () => import("@/layout/index.vue"),
     redirect: PageEnum.BASE_HOME,
     meta: {
-      title: "root"
+      title: "root",
+      icon: "ci:home-fill"
     },
     children: [
       {

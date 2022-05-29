@@ -15,6 +15,10 @@
     username: "账号",
     password: "密码"
   },
+  menu: {
+    root: "首页",
+    error: "错误页面"
+  },
   settings: {
     title: "项目配置",
     logout: " 清空缓存并返回登录页 ",

@@ -24,5 +24,6 @@ export const LoginRoute: AppRouteModule = {
     title: "登录"
   }
 };
+export const RemainingRouter = [LoginRoute];
 
-export const basicRoutes = [LoginRoute, errorRouter];
+export const basicRoutes = [errorRouter];
