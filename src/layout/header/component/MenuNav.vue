@@ -3,6 +3,9 @@ import { inject } from "vue";
 import contentMenu from "@/components/contextmenu/contextMenu.vue";
 import { useMenuNav } from "@/hooks/useMenuNav";
 import { Icon } from "@iconify/vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const emitContext = inject("emitContext") as Fn;
 const hideContext = inject("hideContext") as Fn;
@@ -13,6 +16,15 @@ const { data, activeKey, closable, close, current, contextMenuFn } =
 function openContextMenu(e, index) {
   current.value = index;
   emitContext(e, { name: "context-menu-1" });
+}
+function gohome() {
+  activeKey.value = -1;
+  router.push("/");
+}
+
+function goto(route, index) {
+  activeKey.value = index;
+  router.push(route.path);
 }
 function handleMouseEnter(index, type) {
   if (type) {
@@ -30,7 +42,7 @@ function handleMouseEnter(index, type) {
       <el-tag
         class="scroll-item mr-1"
         :class="{ active: activeKey === -1 }"
-        @click="activeKey = -1"
+        @click="gohome"
         @contextmenu.native="openContextMenu"
         >首页
       </el-tag>
@@ -41,7 +53,7 @@ function handleMouseEnter(index, type) {
         :class="{ active: activeKey === index }"
         v-for="(item, index) in data"
         :key="item.key"
-        @click="activeKey = index"
+        @click="goto(item, index)"
         @close="close(index)"
         @mouseenter="handleMouseEnter(index, true)"
         @mouseleave="handleMouseEnter(index, false)"

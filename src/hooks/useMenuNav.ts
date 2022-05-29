@@ -1,18 +1,20 @@
-import { ref, computed } from "vue";
-
-const test = Array.from({ length: 10 }, (v, i) => {
-  return {
-    name: `导航${i}`,
-    key: `home${i}`
-  };
-});
+import { ref, computed, watchEffect } from "vue";
+import { useTagsView } from "@/hooks/useTagsView";
+import router from "@/router";
+const { handleTags, multiTags } = useTagsView();
 const show = ref(false);
 const activeKey = ref(0);
 const closable = ref();
 const current = ref();
 const data = ref([]);
 const type = ref();
-data.value = test;
+watchEffect(() => {
+  data.value = multiTags.value;
+  // if (data.value.length === 0) {
+  //   return router.push("/");
+  // }
+});
+
 const ableRight = computed(() => {
   return data.value.some((v, i) => {
     return i < current.value;
@@ -25,7 +27,14 @@ const ableLeft = computed(() => {
 });
 export function useMenuNav() {
   function close(index: number) {
-    data.value = data.value.filter((item, i) => i !== index);
+    if (activeKey.value == index) {
+      if (multiTags.value[index - 1]) {
+        router.push(multiTags.value[index - 1]?.path);
+      } else {
+        router.push("/");
+      }
+    }
+    multiTags.value = multiTags.value.filter((item, i) => i !== index);
   }
   function contextMenuFn(t: string) {
     switch (t) {
@@ -38,20 +47,31 @@ export function useMenuNav() {
         data.value = data.value.filter((item, i) => {
           return i >= current.value;
         });
+        multiTags.value = multiTags.value.filter(
+          (item, i) => i >= current.value
+        );
         break;
       case "closeright":
         activeKey.value = current.value;
         data.value = data.value.filter((item, i) => {
           return i <= current.value;
         });
+        multiTags.value = multiTags.value.filter(
+          (item, i) => i <= current.value
+        );
         break;
       case "closeall":
         activeKey.value = -1;
         data.value = [];
+        multiTags.value = [];
+        router.push("/");
         break;
       case "closeother":
-        activeKey.value = current.value;
+        activeKey.value = 0;
         data.value = data.value.filter((item, i) => i === current.value);
+        multiTags.value = multiTags.value.filter(
+          (item, i) => i === current.value
+        );
         break;
     }
   }
