@@ -27,14 +27,20 @@ const ableLeft = computed(() => {
 });
 export function useMenuNav() {
   function close(index: number) {
-    if (activeKey.value == index) {
+    const value = activeKey.value;
+    if (value == index) {
       if (multiTags.value[index - 1]) {
         router.push(multiTags.value[index - 1]?.path);
       } else {
         router.push("/");
       }
     }
-    multiTags.value = multiTags.value.filter((item, i) => i !== index);
+    multiTags.value = multiTags.value.filter((item, i) => {
+      return i !== index;
+    });
+    if (index < value) {
+      activeKey.value = value - 1 == 0 ? 0 : value - 1;
+    }
   }
   function contextMenuFn(t: string) {
     switch (t) {
