@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch, onMounted, watchEffect } from "vue";
+import { ref, watch, onMounted, computed } from "vue";
 import { useMenuSetting } from "@/hooks/useMenuSetting";
 import { useTheme } from "@/hooks/useTheme";
 import sidebarItem from "./sidebarItem.vue";
@@ -8,6 +8,7 @@ import { useRoute, useRouter } from "vue-router";
 import { getParentPaths, findRouteByPath } from "@/router/utils";
 import { useTagsView } from "@/hooks/useTagsView";
 import { useMenuNav } from "@/hooks/useMenuNav";
+import PageEnum from "@/enums/pageEnum";
 const { handleTags, multiTags } = useTagsView();
 const { data, activeKey, closable, close, current, contextMenuFn } =
   useMenuNav();
@@ -31,6 +32,9 @@ const { getNavColor, getMenuCollapse } = useMenuSetting();
 function setIndex(res) {
   activeKey.value = multiTags.value.findIndex(item => item.path === res.path);
 }
+const isHome = findRoute => {
+  return findRoute.path === PageEnum.BASE_HOME;
+};
 function getDefaultActive(routePath) {
   const wholeMenus = permissionStore.getWholeMenus;
   // 当前路由的父级路径
@@ -41,7 +45,9 @@ function getDefaultActive(routePath) {
     }
   )[0];
   defaultActive.value = routePath;
-  handleTags("add", findRoute);
+  if (!isHome(findRoute)) {
+    handleTags("add", findRoute);
+  }
   setIndex(findRoute);
 }
 onMounted(() => {
@@ -77,7 +83,9 @@ function menuSelect(indexPath, routers) {
   }
   let res = findCurrentRoute(indexPath, routers);
   if (!res?.path) return;
-  handleTags("add", res);
+  if (!isHome(res)) {
+    handleTags("add", res);
+  }
   setIndex(res);
 }
 </script>

@@ -8,11 +8,9 @@ const closable = ref();
 const current = ref();
 const data = ref([]);
 const type = ref();
+
 watchEffect(() => {
   data.value = multiTags.value;
-  // if (data.value.length === 0) {
-  //   return router.push("/");
-  // }
 });
 
 const ableRight = computed(() => {
@@ -25,6 +23,7 @@ const ableLeft = computed(() => {
     return i > current.value;
   });
 });
+
 export function useMenuNav() {
   function close(index: number) {
     const value = activeKey.value;
