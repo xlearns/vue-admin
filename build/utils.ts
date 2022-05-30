@@ -7,6 +7,7 @@ export function wrapperEnv(env: Recordable): ViteEnv {
     VITE_PROXY_DOMAIN: "",
     VITE_PROXY_DOMAIN_REAL: "",
     VITE_ROUTER_HISTORY: "",
+    VITE_GLOB_APP_TITLE: "",
     VITE_LEGACY: false
   };
 

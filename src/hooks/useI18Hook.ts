@@ -1,5 +1,5 @@
 import { watchEffect } from "vue";
-import { type I18n, createI18n } from "vue-i18n/index";
+import { type I18n, createI18n } from "vue-i18n";
 import { useStorage } from "@vueuse/core";
 // element-plus国际化
 import enLocale from "element-plus/lib/locale/lang/en";
