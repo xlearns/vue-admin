@@ -36,15 +36,18 @@ const isHome = findRoute => {
   return findRoute.path === PageEnum.BASE_HOME;
 };
 function getDefaultActive(routePath) {
+  routePath = routePath.replace(/redirect\//, "");
   const wholeMenus = permissionStore.getWholeMenus;
   // 当前路由的父级路径
   const parentRoutes = getParentPaths(routePath, wholeMenus)[0];
-  const findRoute = findRouteByPath(parentRoutes, wholeMenus).children.filter(
+
+  const findRoute = findRouteByPath(parentRoutes, wholeMenus)?.children?.filter(
     item => {
       return routePath === item.path;
     }
   )[0];
   defaultActive.value = routePath;
+
   if (!isHome(findRoute)) {
     handleTags("add", findRoute);
   }

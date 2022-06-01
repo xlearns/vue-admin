@@ -23,7 +23,14 @@ const ableLeft = computed(() => {
     return i > current.value;
   });
 });
-
+function reload() {
+  const { currentRoute } = router;
+  const { fullPath, query } = currentRoute.value;
+  router.replace({
+    path: "/redirect" + fullPath,
+    query: query
+  });
+}
 export function useMenuNav() {
   function close(index: number) {
     const value = activeKey.value;
@@ -43,6 +50,9 @@ export function useMenuNav() {
   }
   function contextMenuFn(t: string) {
     switch (t) {
+      case "reload":
+        reload();
+        break;
       case "closecurrent":
         activeKey.value = current.value;
         close(current.value);

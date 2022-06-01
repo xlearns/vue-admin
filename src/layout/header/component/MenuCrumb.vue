@@ -12,6 +12,7 @@ const data = ref([]);
 const permissionStore = usePermissionStoreWithOut();
 const { activeKey } = useMenuNav();
 function getPath(routePath) {
+  routePath = routePath.replace(/redirect\//, "");
   let res = [];
   const wholeMenus = permissionStore.getWholeMenus;
   // 当前路由的父级路径

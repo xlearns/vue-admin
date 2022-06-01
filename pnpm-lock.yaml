@@ -36,6 +36,7 @@ specifiers:
   stylelint-order: ^5.0.0
   typescript: ~4.6.3
   unplugin-element-plus: ^0.4.0
+  unplugin-vue-define-options: ^0.6.1
   vite: ^2.9.5
   vite-plugin-html: ^3.2.0
   vite-plugin-windicss: ^1.8.4
@@ -90,6 +91,7 @@ devDependencies:
   stylelint-order: 5.0.0_stylelint@14.8.2
   typescript: 4.6.3
   unplugin-element-plus: 0.4.0_vite@2.9.5
+  unplugin-vue-define-options: 0.6.1_vite@2.9.5+vue@3.2.33
   vite: 2.9.5_sass@1.51.0
   vite-plugin-html: 3.2.0_vite@2.9.5
   vite-plugin-windicss: 1.8.4_vite@2.9.5
@@ -3480,6 +3482,23 @@ packages:
       es-module-lexer: 0.10.5
       magic-string: 0.26.1
       unplugin: 0.6.2_vite@2.9.5
+    transitivePeerDependencies:
+      - esbuild
+      - rollup
+      - vite
+      - webpack
+    dev: true
+
+  /unplugin-vue-define-options/0.6.1_vite@2.9.5+vue@3.2.33:
+    resolution: {integrity: sha512-YZQxE3vC7Tb4Ev10blfYPC23hR3t8UNynoVSt2bY9GtHB2usxpywPQqRj7xdUtuj6JsDfrZ9wRKKbEkcMEXI1A==}
+    engines: {node: '>=14.17.0'}
+    peerDependencies:
+      vue: ^3.2.25
+    dependencies:
+      '@rollup/pluginutils': 4.2.1
+      '@vue/compiler-sfc': 3.2.33
+      unplugin: 0.6.2_vite@2.9.5
+      vue: 3.2.33
     transitivePeerDependencies:
       - esbuild
       - rollup

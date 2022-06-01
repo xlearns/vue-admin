@@ -2,7 +2,7 @@ import { type App, watchEffect } from "vue";
 import { type I18n, createI18n } from "vue-i18n";
 import { useStorage } from "@vueuse/core";
 
-const state = useStorage("locale", {
+const state = useStorage("locale", { 
   locale: "zh"
 });
 
