@@ -2,7 +2,6 @@
 
 <template>
   <div>welcome</div>
-  <router-view />
 </template>
 
 <style scoped></style>
