@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 function add(a, b) {
-  return a + b;
+  return Number(a) + Number(b);
 }
 describe("vitest测试", () => {
   it("测试1", () => {

@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+# commit会自动执行这个hook
+# npm test
+npm run lint:lint-staged
+npm run lint:prettier

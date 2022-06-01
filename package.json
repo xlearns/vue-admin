@@ -8,9 +8,11 @@
     "lint:eslint": "eslint --cache --max-warnings 0  \"{src,mock}/**/*.{vue,ts,tsx}\" --fix",
     "lint:stylelint": "stylelint --cache --fix \"**/*.{vue,css,scss,postcss,less}\" --cache --cache-location node_modules/.cache/stylelint/",
     "lint:prettier": "prettier --write  \"src/**/*.{js,json,tsx,css,less,scss,vue,html,md}\"",
+    "lint:lint-staged": "lint-staged -c ./.husky/.lintstagedrc.js",
     "lint": "pnpm lint:eslint && pnpm lint:prettier&& pnpm lint:stylelint",
     "preinstall": "npx only-allow pnpm",
-    "deploy": "bash deploy.sh"
+    "deploy": "bash deploy.sh",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@vueuse/core": "^8.2.6",
@@ -27,6 +29,8 @@
     "vue3-contextmenu": "^0.2.12"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.0.2",
+    "@commitlint/config-conventional": "^17.0.2",
     "@iconify/vue": "^3.2.1",
     "@intlify/vite-plugin-vue-i18n": "^3.4.0",
     "@types/node": "^16.11.27",
@@ -39,6 +43,8 @@
     "cross-env": "^7.0.3",
     "eslint": "^8.13.0",
     "eslint-plugin-vue": "^8.6.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.0.0",
     "postcss": "^8.4.13",
     "postcss-html": "^1.4.1",
     "postcss-scss": "^4.0.4",
