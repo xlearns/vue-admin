@@ -1,27 +1,30 @@
 <script setup lang="ts">
-import { watchEffect, ref, computed } from "vue";
+import { watch, ref, computed, onMounted } from "vue";
 import { useI18n } from "vue-i18n";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { getParentPaths, findRouteByPath } from "@/router/utils";
 import { usePermissionStoreWithOut } from "@/stores/modules/permission";
 import PageEnum from "@/enums/pageEnum";
 import { useMenuNav } from "@/hooks/useMenuNav";
 const { t } = useI18n();
 const route = useRoute();
+const router = useRouter();
 const data = ref([]);
 const permissionStore = usePermissionStoreWithOut();
 const { activeKey } = useMenuNav();
+
 function getPath(routePath) {
-  routePath = routePath.replace(/redirect\//, "");
+  routePath = routePath.replace(/redirect\//gim, "");
   let res = [];
   const wholeMenus = permissionStore.getWholeMenus;
+
   // 当前路由的父级路径
   const parentRoutes = getParentPaths(routePath, wholeMenus)[0];
-  const findRoute = findRouteByPath(parentRoutes, wholeMenus).children.filter(
-    item => {
+  const findRoute =
+    findRouteByPath(parentRoutes, wholeMenus)?.children?.filter(item => {
       return routePath === item.path;
-    }
-  )[0];
+    })[0] || wholeMenus[0];
+
   wholeMenus.forEach(item => {
     if (item.path == parentRoutes) {
       res[0] = {
@@ -30,7 +33,7 @@ function getPath(routePath) {
       };
     }
   });
-  if (findRoute.path == PageEnum.BASE_HOME) {
+  if (findRoute?.path == PageEnum.BASE_HOME) {
     res = [];
   } else if (res[0]) {
     res[1] = {
@@ -49,9 +52,18 @@ const isHome = computed(() => {
   return route.path == PageEnum.BASE_HOME;
 });
 
-watchEffect(() => {
+// watchEffect(() => {
+//   getPath(route.path);
+// });
+onMounted(() => {
   getPath(route.path);
 });
+watch(
+  () => route.path,
+  () => {
+    getPath(route.path);
+  }
+);
 </script>
 <template>
   <el-breadcrumb separator="/">

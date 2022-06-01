@@ -6,12 +6,32 @@ import { Icon } from "@iconify/vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
-
 const emitContext = inject("emitContext") as Fn;
 const hideContext = inject("hideContext") as Fn;
+const rightData = [
+  {
+    url: "eva:refresh-outline",
+    name: "Refresh"
+  },
+  { url: "akar-icons:chevron-down", name: "Expand" },
+  {
+    url: "codicon:screen-full",
+    name: "Fullscreen"
+  }
+];
 
-const { data, activeKey, closable, close, current, contextMenuFn } =
-  useMenuNav();
+const {
+  isdisable,
+  leftRight,
+  rightClick,
+  data,
+  activeKey,
+  closable,
+  close,
+  current,
+  contextMenuFn,
+  tagsData
+} = useMenuNav();
 
 function openContextMenu(e, index) {
   current.value = index;
@@ -32,6 +52,11 @@ function handleMouseEnter(index, type) {
   } else {
     closable.value = "";
   }
+}
+
+function fn(type, bool: boolean) {
+  if (bool) return;
+  emit("contextMenuFn", type);
 }
 </script>
 
@@ -65,15 +90,31 @@ function handleMouseEnter(index, type) {
     </div>
     <div class="arrow-right"></div>
     <div class="right-button">
-      <div class="right-button-item">
-        <Icon icon="eva:refresh-outline" />
-      </div>
-      <div class="right-button-item">
-        <Icon icon="akar-icons:chevron-down" />
-      </div>
-      <div class="right-button-item">
-        <Icon icon="codicon:screen-full" />
-      </div>
+      <el-tooltip
+        :show-after="1000"
+        effect="dark"
+        :content="item.name"
+        placement="bottom"
+        v-for="(item, index) in rightData"
+        :key="index"
+      >
+        <div class="right-button-item" @click="rightClick(index)">
+          <Icon :icon="item.url" v-if="index != 1" />
+          <el-dropdown trigger="click" v-else>
+            <Icon :icon="item.url" />
+            <template #dropdown>
+              <el-dropdown-item
+                v-for="(item, index) in tagsData"
+                :key="index"
+                :disabled="leftRight(index)"
+                @click="fn(item.key, !isdisable && index != 5)"
+              >
+                <Icon :icon="item.url" />{{ item.name }}
+              </el-dropdown-item>
+            </template>
+          </el-dropdown>
+        </div>
+      </el-tooltip>
     </div>
   </div>
   <contentMenu @contextMenuFn="contextMenuFn" />

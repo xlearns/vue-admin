@@ -8,7 +8,38 @@ const closable = ref();
 const current = ref();
 const data = ref([]);
 const type = ref();
-
+const tagsData = ref([
+  {
+    name: "重新加载",
+    key: "reload",
+    url: "foundation:refresh"
+  },
+  {
+    name: "关闭标签页",
+    key: "closecurrent",
+    url: "ci:close-small"
+  },
+  {
+    name: "关闭左侧标签页",
+    key: "closeleft",
+    url: "bx:arrow-to-left"
+  },
+  {
+    name: "关闭右侧标签页",
+    key: "closeright",
+    url: "bx:arrow-to-right"
+  },
+  {
+    name: "关闭其它标签页",
+    key: "closeother",
+    url: "codicon:close-all"
+  },
+  {
+    name: "关闭全部标签页",
+    key: "closeall",
+    url: "ant-design:minus-outlined"
+  }
+]);
 watchEffect(() => {
   data.value = multiTags.value;
 });
@@ -23,6 +54,23 @@ const ableLeft = computed(() => {
     return i > current.value;
   });
 });
+const isdisable = computed(() => {
+  return activeKey.value == current.value;
+});
+
+function leftRight(index) {
+  let res = !isdisable.value;
+
+  if (!res && index == 2) {
+    res = !ableRight.value;
+  } else if (!res && index == 3) {
+    res = !ableLeft.value;
+  } else if (index == 5) {
+    res = false;
+  }
+
+  return res;
+}
 function reload() {
   const { currentRoute } = router;
   const { fullPath, query } = currentRoute.value;
@@ -90,8 +138,22 @@ export function useMenuNav() {
         break;
     }
   }
-
+  function rightClick(index: number) {
+    switch (index) {
+      case 0:
+        reload();
+        break;
+      case 1:
+        break;
+      case 2:
+        break;
+    }
+  }
   return {
+    isdisable,
+    leftRight,
+    tagsData,
+    rightClick,
     ableRight,
     ableLeft,
     type,

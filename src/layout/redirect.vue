@@ -15,12 +15,10 @@ const { path } = params;
 
 const _path = Array.isArray(path) ? path.join("/") : path;
 
-setTimeout(() => {
-  replace({
-    path: "/" + _path,
-    query
-  });
-}, 500);
+replace({
+  path: "/" + _path,
+  query
+});
 </script>
 
 <template>

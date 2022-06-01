@@ -33,22 +33,22 @@ function setIndex(res) {
   activeKey.value = multiTags.value.findIndex(item => item.path === res.path);
 }
 const isHome = findRoute => {
-  return findRoute.path === PageEnum.BASE_HOME;
+  return findRoute?.path === PageEnum.BASE_HOME;
 };
 function getDefaultActive(routePath) {
-  routePath = routePath.replace(/redirect\//, "");
+  routePath = routePath.replace(/redirect\//gim, "");
+
   const wholeMenus = permissionStore.getWholeMenus;
   // 当前路由的父级路径
   const parentRoutes = getParentPaths(routePath, wholeMenus)[0];
 
-  const findRoute = findRouteByPath(parentRoutes, wholeMenus)?.children?.filter(
-    item => {
+  const findRoute =
+    findRouteByPath(parentRoutes, wholeMenus)?.children?.filter(item => {
       return routePath === item.path;
-    }
-  )[0];
-  defaultActive.value = routePath;
+    })[0] || wholeMenus[0];
 
-  if (!isHome(findRoute)) {
+  defaultActive.value = routePath;
+  if (!isHome(findRoute) && findRoute.name != wholeMenus[0].name) {
     handleTags("add", findRoute);
   }
   setIndex(findRoute);
