@@ -13,11 +13,11 @@ const rightData = [
     url: "eva:refresh-outline",
     name: "Refresh"
   },
-  { url: "akar-icons:chevron-down", name: "Expand" },
-  {
-    url: "codicon:screen-full",
-    name: "Fullscreen"
-  }
+  { url: "akar-icons:chevron-down", name: "Expand" }
+  // {
+  //   url: "codicon:screen-full",
+  //   name: "Fullscreen"
+  // }
 ];
 const tagsData = ref([
   {

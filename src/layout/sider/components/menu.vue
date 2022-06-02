@@ -9,10 +9,11 @@ import { getParentPaths, findRouteByPath } from "@/router/utils";
 import { useTagsView } from "@/hooks/useTagsView";
 import { useMenuNav } from "@/hooks/useMenuNav";
 import PageEnum from "@/enums/pageEnum";
+import logo from "@/assets/logo.svg";
 const { handleTags, multiTags } = useTagsView();
 const { data, activeKey, closable, close, current, contextMenuFn } =
   useMenuNav();
-defineProps({
+const props = defineProps({
   mode: {
     type: String,
     default: () => {
@@ -91,6 +92,9 @@ function menuSelect(indexPath, routers) {
   }
   setIndex(res);
 }
+const isVertical = computed(() => {
+  return props.mode == "vertical";
+});
 </script>
 
 <template>
@@ -104,6 +108,19 @@ function menuSelect(indexPath, routers) {
     :default-active="defaultActive"
     @select="indexPath => menuSelect(indexPath, router.getRoutes())"
   >
+    <el-menu-item class="logo" disabled>
+      <div class="flex items-center" v-if="isVertical">
+        <el-icon class="!w-2em !h-2em">
+          <logo class="!w-full !h-full" />
+        </el-icon>
+        <span
+          class="color-[#1890ff] whitespace-nowrap"
+          v-if="!(getMenuCollapse && navTheme == 0)"
+          >VUE3-Admin</span
+        >
+      </div>
+    </el-menu-item>
+
     <sidebar-item
       v-for="route in permissionStore.getWholeMenus"
       :key="route.path"
@@ -112,5 +129,19 @@ function menuSelect(indexPath, routers) {
     />
   </el-menu>
 </template>
+>
+<style lang="scss" scoped>
+.logo {
+  padding-left: 15px !important;
 
-<style scoped></style>
+  &:hover {
+    background: v-bind("getNavColor.bg");
+  }
+}
+
+.el-menu-item.is-disabled.logo {
+  background: 0 0 !important;
+  opacity: 1;
+  cursor: pointer;
+}
+</style>

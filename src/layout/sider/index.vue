@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { useMenuSetting } from "@/hooks/useMenuSetting";
-import { computed } from "vue";
+import { computed, watchEffect, ref } from "vue";
 import { useTheme } from "@/hooks/useTheme";
 import Menu from "./components/menu.vue";
+
 let { navTheme } = useTheme();
-defineProps({
+const props = defineProps({
   mode: {
     type: String,
     default: () => {
@@ -24,7 +25,9 @@ const menuWidth = computed(() => {
 });
 </script>
 <template>
-  <el-aside :width="menuWidth" class="h-full"> <Menu :mode="mode" /> </el-aside>
+  <el-aside :width="menuWidth" class="h-full">
+    <Menu :mode="mode" />
+  </el-aside>
 </template>
 
 <style scoped>
