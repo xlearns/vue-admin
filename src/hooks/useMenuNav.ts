@@ -8,50 +8,64 @@ const closable = ref();
 const current = ref();
 const data = ref([]);
 const type = ref();
+const rightData = [
+  {
+    url: "eva:refresh-outline",
+    name: "Refresh"
+  },
+  { url: "akar-icons:chevron-down", name: "Expand" },
+  {
+    url: "codicon:screen-full",
+    name: "Fullscreen"
+  }
+];
 const tagsData = ref([
   {
     name: "重新加载",
     key: "reload",
-    url: "foundation:refresh"
+    url: "foundation:refresh",
+    disabled: false
   },
   {
     name: "关闭标签页",
     key: "closecurrent",
-    url: "ci:close-small"
+    url: "ci:close-small",
+    disabled: false
   },
   {
     name: "关闭左侧标签页",
     key: "closeleft",
-    url: "bx:arrow-to-left"
+    url: "bx:arrow-to-left",
+    disabled: false
   },
   {
     name: "关闭右侧标签页",
     key: "closeright",
-    url: "bx:arrow-to-right"
+    url: "bx:arrow-to-right",
+    disabled: false
   },
   {
     name: "关闭其它标签页",
     key: "closeother",
-    url: "codicon:close-all"
+    url: "codicon:close-all",
+    disabled: false
   },
   {
     name: "关闭全部标签页",
     key: "closeall",
-    url: "ant-design:minus-outlined"
+    url: "ant-design:minus-outlined",
+    disabled: false
   }
 ]);
-watchEffect(() => {
-  data.value = multiTags.value;
-});
 
 const ableRight = computed(() => {
   return data.value.some((v, i) => {
-    return i < current.value;
+    return i < activeKey.value;
   });
 });
 const ableLeft = computed(() => {
   return data.value.some((v, i) => {
-    return i > current.value;
+    return i > activeKey.value;
   });
 });
 const isdisable = computed(() => {
@@ -68,7 +82,6 @@ function leftRight(index) {
   } else if (index == 5) {
     res = false;
   }
-
   return res;
 }
 function reload() {
@@ -79,6 +92,24 @@ function reload() {
     query: query
   });
 }
+
+watchEffect(() => {
+  current.value = activeKey.value;
+  tagsData.value = tagsData.value.map((v, i) => {
+    if (activeKey.value == -1 && (i == 1 || i == 4)) {
+      v.disabled = false;
+    } else {
+      v.disabled = true;
+    }
+    return v;
+  });
+  tagsData.value[2].disabled = ableRight.value;
+  tagsData.value[3].disabled = ableLeft.value;
+});
+watchEffect(() => {
+  data.value = multiTags.value;
+});
+
 export function useMenuNav() {
   function close(index: number) {
     const value = activeKey.value;
@@ -163,6 +194,7 @@ export function useMenuNav() {
     closable,
     current,
     close,
-    contextMenuFn
+    contextMenuFn,
+    rightData
   };
 }

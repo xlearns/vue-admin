@@ -1,28 +1,16 @@
 <script setup lang="ts">
-import { inject } from "vue";
+import { inject, watchEffect } from "vue";
 import contentMenu from "@/components/contextmenu/contextMenu.vue";
 import { useMenuNav } from "@/hooks/useMenuNav";
 import { Icon } from "@iconify/vue";
 import { useRouter } from "vue-router";
-
+const emit = defineEmits({});
 const router = useRouter();
 const emitContext = inject("emitContext") as Fn;
 const hideContext = inject("hideContext") as Fn;
-const rightData = [
-  {
-    url: "eva:refresh-outline",
-    name: "Refresh"
-  },
-  { url: "akar-icons:chevron-down", name: "Expand" },
-  {
-    url: "codicon:screen-full",
-    name: "Fullscreen"
-  }
-];
 
 const {
-  isdisable,
-  leftRight,
+  rightData,
   rightClick,
   data,
   activeKey,
@@ -56,7 +44,7 @@ function handleMouseEnter(index, type) {
 
 function fn(type, bool: boolean) {
   if (bool) return;
-  emit("contextMenuFn", type);
+  contextMenuFn(type);
 }
 </script>
 
@@ -97,17 +85,25 @@ function fn(type, bool: boolean) {
         placement="bottom"
         v-for="(item, index) in rightData"
         :key="index"
+        :disabled="index == 1"
       >
-        <div class="right-button-item" @click="rightClick(index)">
-          <Icon :icon="item.url" v-if="index != 1" />
-          <el-dropdown trigger="click" v-else>
+        <div
+          class="right-button-item"
+          v-if="index != 1"
+          @click="rightClick(index)"
+        >
+          <Icon :icon="item.url" />
+        </div>
+        <div class="right-button-item" v-else @click="rightClick(index)">
+          <el-dropdown trigger="click">
             <Icon :icon="item.url" />
             <template #dropdown>
               <el-dropdown-item
-                v-for="(item, index) in tagsData"
+                v-for="(item, index) in tagsData.slice(1)"
                 :key="index"
-                :disabled="leftRight(index)"
-                @click="fn(item.key, !isdisable && index != 5)"
+                :disabled="!item.disabled"
+                :command="{ index, item }"
+                @click="fn(item.key, !item.disabled)"
               >
                 <Icon :icon="item.url" />{{ item.name }}
               </el-dropdown-item>
@@ -121,6 +117,15 @@ function fn(type, bool: boolean) {
 </template>
 
 <style lang="scss" scoped>
+.el-dropdown,
+::v-deep(.el-tooltip__trigger) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
 .tags-view {
   display: flex;
   width: 100%;
