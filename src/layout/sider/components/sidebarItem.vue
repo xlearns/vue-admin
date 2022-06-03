@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// import { pathToRegexp } from "path-to-regexp";
 import { Icon } from "@iconify/vue";
 import { useI18n } from "vue-i18n";
 const props = defineProps({
@@ -23,7 +22,6 @@ function resolvePath(routePath) {
   if (httpReg.test(routePath) || httpReg.test(props.basePath)) {
     return routePath || props.basePath;
   } else {
-    // return path.resolve(props.basePath, routePath);
     return routePath;
   }
 }

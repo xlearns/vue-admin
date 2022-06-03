@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch, onMounted, computed } from "vue";
+import { ref, watch, onMounted, computed, watchEffect } from "vue";
 import { useMenuSetting } from "@/hooks/useMenuSetting";
 import { useTheme } from "@/hooks/useTheme";
 import sidebarItem from "./sidebarItem.vue";
@@ -9,11 +9,11 @@ import { getParentPaths, findRouteByPath } from "@/router/utils";
 import { useTagsView } from "@/hooks/useTagsView";
 import { useMenuNav } from "@/hooks/useMenuNav";
 import PageEnum from "@/enums/pageEnum";
-import logo from "@/assets/logo.svg";
+import AppLogo from "./logo.vue";
+
 const { handleTags, multiTags } = useTagsView();
-const { data, activeKey, closable, close, current, contextMenuFn } =
-  useMenuNav();
-const props = defineProps({
+const { activeKey, close, contextMenuFn } = useMenuNav();
+defineProps({
   mode: {
     type: String,
     default: () => {
@@ -27,9 +27,8 @@ let defaultActive = ref(null);
 const permissionStore = usePermissionStoreWithOut();
 const route = useRoute();
 const router = useRouter();
-const routers = router.options.routes;
 let { navTheme } = useTheme();
-const { getNavColor, getMenuCollapse } = useMenuSetting();
+const { getNavColor, getMenuCollapse, getMenuWidth } = useMenuSetting();
 function setIndex(res) {
   activeKey.value = multiTags.value.findIndex(item => item.path === res.path);
 }
@@ -92,44 +91,69 @@ function menuSelect(indexPath, routers) {
   }
   setIndex(res);
 }
-const isVertical = computed(() => {
-  return props.mode == "vertical";
+
+const getShowHeaderLogo = computed(() => {
+  return navTheme.value == 0;
+});
+const getShowTitle = computed(() => {
+  return getMenuCollapse.value && navTheme.value == 0;
 });
 </script>
 
 <template>
-  <el-menu
-    :collapse="getMenuCollapse && navTheme == 0"
-    class="h-full overflow-hidden"
-    :mode="mode"
-    router
-    :text-color="getNavColor.text"
-    :background-color="getNavColor.bg"
-    :default-active="defaultActive"
-    @select="indexPath => menuSelect(indexPath, router.getRoutes())"
-  >
-    <el-menu-item class="logo" disabled>
-      <div class="flex items-center" v-if="isVertical">
-        <el-icon class="!w-2em !h-2em">
-          <logo class="!w-full !h-full" />
-        </el-icon>
-        <span
-          class="color-[#1890ff] whitespace-nowrap"
-          v-if="!(getMenuCollapse && navTheme == 0)"
-          >VUE3-Admin</span
-        >
-      </div>
-    </el-menu-item>
-
-    <sidebar-item
-      v-for="route in permissionStore.getWholeMenus"
-      :key="route.path"
-      :item="route"
-      :base-path="route.path"
-    />
-  </el-menu>
+  <!-- 垂直   height="calc(100% - 32px)" -->
+  <template v-if="getShowHeaderLogo">
+    <AppLogo :showTitle="!getShowTitle" />
+    <el-scrollbar
+      :style="{ background: getNavColor.bg }"
+      height="calc(100% - 32px)"
+    >
+      <el-menu
+        :style="{
+          height: getShowHeaderLogo ? 'calc(100% - 32px)' : '100%'
+        }"
+        :collapse-transition="false"
+        :collapse="getMenuCollapse && navTheme == 0"
+        class="h-full overflow-hidden !border-r-0"
+        :mode="mode"
+        router
+        :text-color="getNavColor.text"
+        :background-color="getNavColor.bg"
+        :default-active="defaultActive"
+        @select="indexPath => menuSelect(indexPath, router.getRoutes())"
+      >
+        <sidebar-item
+          v-for="route in permissionStore.getWholeMenus"
+          :key="route.path"
+          :item="route"
+          :base-path="route.path"
+        />
+      </el-menu>
+    </el-scrollbar>
+  </template>
+  <!-- 水平-->
+  <template v-else>
+    <el-menu
+      :style="{ height: getShowHeaderLogo ? 'calc(100% - 32px)' : '100%' }"
+      :collapse-transition="false"
+      :collapse="getMenuCollapse && navTheme == 0"
+      class="h-full overflow-hidden !border-r-0 !border-b-0"
+      :mode="mode"
+      router
+      :text-color="getNavColor.text"
+      :background-color="getNavColor.bg"
+      :default-active="defaultActive"
+      @select="indexPath => menuSelect(indexPath, router.getRoutes())"
+    >
+      <sidebar-item
+        v-for="route in permissionStore.getWholeMenus"
+        :key="route.path"
+        :item="route"
+        :base-path="route.path"
+      />
+    </el-menu>
+  </template>
 </template>
->
 <style lang="scss" scoped>
 .logo {
   padding-left: 15px !important;

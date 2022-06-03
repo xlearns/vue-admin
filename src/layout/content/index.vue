@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <el-main class="bg-[#f0f2f5]">
+  <el-main class="bg-[#f0f2f5] h-[100vh] !overflow-hidden">
     <RouterView>
       <template #default="{ Component, route }">
         <!-- todo:
