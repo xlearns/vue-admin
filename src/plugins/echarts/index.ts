@@ -1,5 +1,12 @@
 import * as echarts from "echarts/core";
-import { PieChart, BarChart, LineChart, GraphChart } from "echarts/charts";
+import {
+  PieChart,
+  BarChart,
+  LineChart,
+  GraphChart,
+  RadarChart,
+  FunnelChart
+} from "echarts/charts";
 
 import {
   TitleComponent,
@@ -22,6 +29,8 @@ import { SVGRenderer } from "echarts/renderers";
 const { use } = echarts;
 
 use([
+  FunnelChart,
+  RadarChart,
   PieChart,
   BarChart,
   LineChart,

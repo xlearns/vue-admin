@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import ECard from "@/components/card/index.vue";
+import ECard from "@/views/welcome/src/components/ECard.vue";
+import DCard from "@/views/welcome/src/components/DCard.vue";
 import { useWelcome } from "@/views/welcome/src/hooks/useWelcome";
 const { topData } = useWelcome();
 </script>
 
 <template>
   <div class="h-full">
-    <div v-for="(item, index) in topData" :key="index">
-      <ECard>hello</ECard>
-    </div>
+    <ECard :data="topData" />
+    <DCard :data="topData" />
   </div>
 </template>
 

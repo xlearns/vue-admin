@@ -58,6 +58,7 @@ function collapse() {
 
 <style scoped>
 .mini-menu :deep(.el-drawer__body) {
+  overflow: hidden;
   padding: 0;
 }
 
