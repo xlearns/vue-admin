@@ -7,6 +7,7 @@ import ElementPlus from "unplugin-element-plus/vite";
 import svgLoader from "vite-svg-loader";
 import VueI18n from "@intlify/vite-plugin-vue-i18n";
 import configHtmlPlugin from "./html";
+// import themePlugs from "./theme";
 import DefineOptions from "unplugin-vue-define-options/vite";
 
 export function getPluginsList(viteEnv, VITE_LEGACY) {
@@ -21,8 +22,9 @@ export function getPluginsList(viteEnv, VITE_LEGACY) {
     vueJsx(),
     WindiCSS(),
     DefineOptions(),
-    ElementPlus({}),
+    ElementPlus({ useSource: true }),
     svgLoader()
+    // themePlugs()
   ];
   // vite-plugin-html
   vitePlugins.push(configHtmlPlugin(viteEnv, VITE_LEGACY));

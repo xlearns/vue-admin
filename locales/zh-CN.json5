@@ -16,7 +16,7 @@
     password: "密码"
   },
   menu: {
-    root: "首页",
+    root: "控制面板",
     error: "错误页面"
   },
   settings: {

@@ -19,38 +19,56 @@ export const NavModel = [
 export const colors = [
   {
     bg: "#1b2a47",
-    text: "#fff"
+    text: "#fff",
+    key: "default",
+    active: "#70b6ff"
   },
   {
     bg: "#fff",
-    text: "#000"
+    text: "#000",
+    key: "while",
+    active: "#70b6ff"
   },
   {
     bg: "#f5222d",
-    text: "#fff"
+    text: "#fff",
+    key: "red",
+    active: "#70b6ff"
   },
   {
     bg: "#fa541c",
-    text: "#fff"
+    text: "#fff",
+    key: "orange",
+    active: "#fff"
   },
   {
     bg: "#fadb14",
-    text: "#fff"
+    text: "#fff",
+    key: "yellow",
+    active: "#fff"
   },
   {
     bg: "#13c2c2",
-    text: "#fff"
+    text: "#fff",
+    key: "blue",
+    active: "#fff"
   },
   {
     bg: "#52c41a",
-    text: "#fff"
+    text: "#fff",
+    key: "green",
+    active: "#fff"
   },
   {
     bg: "#eb2f96",
-    text: "#fff"
+    text: "#fff",
+    key: "pink",
+    active: "#fff"
   },
   {
     bg: "#722ed1",
-    text: "#fff"
+    text: "#fff",
+    key: "purple",
+    active: "#fff"
   }
 ];

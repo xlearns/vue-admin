@@ -10,13 +10,14 @@ const getMenuWidth = computed(() => {
 const getNavColor = computed(() => {
   return appStore.getNavColor;
 });
+
 const getSiderShow = computed(() => {
   return appStore.getSiderShow;
 });
 const setSiderShow = (item: boolean) => {
   appStore.setSiderShow(item);
 };
-const setNavColor = (item: { bg: string; text: string }) => {
+const setNavColor = (item: { bg: string; text: string; key: string }) => {
   appStore.setNavColor(item);
 };
 const setMenuCollapse = (item: boolean) => {

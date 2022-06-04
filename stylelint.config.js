@@ -22,6 +22,8 @@ module.exports = {
       true,
       {
         ignoreAtRules: [
+          "use",
+          "forward",
           "tailwind",
           "apply",
           "variants",

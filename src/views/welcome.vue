@@ -2,6 +2,7 @@
 import ECard from "@/views/welcome/src/components/ECard.vue";
 import DCard from "@/views/welcome/src/components/DCard.vue";
 import { useWelcome } from "@/views/welcome/src/hooks/useWelcome";
+import { useTheme } from "@/hooks/useTheme";
 const { topData } = useWelcome();
 </script>
 

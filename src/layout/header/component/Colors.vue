@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import Check from "@/assets/svg/check.svg";
 import { useMenuSetting } from "@/hooks/useMenuSetting";
+import { useTheme } from "@/hooks/useTheme";
 import { ref } from "vue";
 import { colors } from "../utils/enums";
+const { myToggleTheme } = useTheme();
 const { getNavColor, setNavColor } = useMenuSetting();
 function getCurIndex(data, target) {
   let res = 0;
@@ -14,9 +16,14 @@ function getCurIndex(data, target) {
   return res;
 }
 const cur = ref(getCurIndex(colors, getNavColor.value));
-function changeColor(index: number, item: { bg: string; text: string }) {
+
+function changeColor(
+  index: number,
+  item: { bg: string; text: string; key: string }
+) {
   cur.value = index;
   setNavColor(item);
+  // myToggleTheme(item.key);
 }
 </script>
 

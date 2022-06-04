@@ -57,4 +57,10 @@ function resolvePath(routePath) {
   </el-sub-menu>
 </template>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.el-menu-item.is-active,
+.el-sub-menu.is-active {
+  font-weight: bold;
+  color: #70b6ff;
+}
+</style>

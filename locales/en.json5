@@ -16,7 +16,7 @@
     password: "password"
   },
   menu: {
-    root: "root",
+    root: "dashboard",
     error: "error page"
   },
   settings: {

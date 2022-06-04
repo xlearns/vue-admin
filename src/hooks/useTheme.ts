@@ -1,5 +1,7 @@
-import { ref, watchEffect } from "vue";
+import { ref, onMounted } from "vue";
 import { useStorage } from "@vueuse/core";
+import { toggleTheme } from "@zougt/vite-plugin-theme-preprocessor/dist/browser-utils";
+
 const themeColors = ref([
   // 道奇蓝（默认）
   { color: "#1b2a47", themeColor: "default" },
@@ -33,6 +35,10 @@ const headerTheme = useStorage("headerTheme", "default");
 // 导航栏模式
 const navTheme = useStorage("navTheme", 0);
 
+function myToggleTheme(themeType) {
+  toggleTheme({ scopeName: `theme-${themeType}` });
+}
+
 export const useTheme = () => {
   function clear() {
     systemTheme.value = "default";
@@ -45,6 +51,7 @@ export const useTheme = () => {
   }
   return {
     clear,
+    myToggleTheme,
     changeNavTheme,
     themeColors,
     systemTheme,

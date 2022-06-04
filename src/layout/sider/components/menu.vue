@@ -27,7 +27,7 @@ let defaultActive = ref(null);
 const permissionStore = usePermissionStoreWithOut();
 const route = useRoute();
 const router = useRouter();
-let { navTheme } = useTheme();
+let { navTheme, myToggleTheme } = useTheme();
 const { getNavColor, getMenuCollapse, getMenuWidth } = useMenuSetting();
 function setIndex(res) {
   activeKey.value = multiTags.value.findIndex(item => item.path === res.path);
@@ -55,6 +55,8 @@ function getDefaultActive(routePath) {
 }
 onMounted(() => {
   getDefaultActive(route.path);
+  // let { key } = getNavColor.value;
+  // key && myToggleTheme(key);
 });
 
 watch(
