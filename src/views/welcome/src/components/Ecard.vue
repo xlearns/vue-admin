@@ -12,7 +12,7 @@ defineProps({
   }
 });
 
-function getOptions(item: any, index: number) {
+function getOptions(item: any, index: string) {
   const res = EchartsOptions[index] || {};
   return res;
 }

@@ -22,9 +22,7 @@ const layoutClass = computed(() => {
       <LayoutSideBar v-if="navTheme == 0 && getSiderShow" />
       <el-container direction="vertical">
         <LayoutMultipleHeader />
-        <el-scrollbar>
-          <LayoutContent />
-        </el-scrollbar>
+        <LayoutContent />
         <LayoutFooter v-if="false" />
       </el-container>
     </el-container>

@@ -2,20 +2,22 @@
 
 <template>
   <el-main class="bg-[#f0f2f5] h-[100vh] !overflow-hidden">
-    <RouterView>
-      <template #default="{ Component, route }">
-        <!-- todo:
+    <el-scrollbar>
+      <RouterView>
+        <template #default="{ Component, route }">
+          <!-- todo:
              缓存
         -->
-        <transition name="route-animate" mode="out-in" appear>
-          <component
-            :is="Component"
-            :key="route.fullPath"
-            class="main-content"
-          />
-        </transition>
-      </template>
-    </RouterView>
+          <transition name="route-animate" mode="out-in" appear>
+            <component
+              :is="Component"
+              :key="route.fullPath"
+              class="main-content"
+            />
+          </transition>
+        </template>
+      </RouterView>
+    </el-scrollbar>
   </el-main>
 </template>
 <!-- <style scoped>

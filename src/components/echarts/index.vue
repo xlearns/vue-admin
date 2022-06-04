@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref, watch } from "vue";
 import Echarts from "@plugins/echarts";
+import { useElementSize } from "@vueuse/core";
 
 const props = defineProps({
   options: Object,
@@ -88,6 +89,16 @@ onMounted(() => {
     ani(defaultAnimationConfig.time);
   }
 });
+
+const { width, height } = useElementSize(dom);
+
+watch(
+  () => [width.value, height.value],
+  () => {
+    onResize();
+  }
+);
+
 onUnmounted(() => {
   clearInterval(timerObj);
   window.removeEventListener("resize", onResize);
