@@ -1,4 +1,5 @@
 $--colors: (
+  "white": #000,
   "primary": (
     "base": #fff
   ),
@@ -18,11 +19,18 @@ $--colors: (
     "base": #42b8dd
   )
 );
+$--buttons: (
+  "active-text-color": (
+    red
+  ),
+  "hover-text-color": (
+    #000
+  ),
+  "text-color": (
+    red
+  )
+);
 
 @forward "element-plus/theme-chalk/src/common/var.scss" with (
-  $colors: $--colors,
-  $button: (
-    "text-color": #303133,
-    "active-text-color": #303133
-  )
+  $colors: $--colors
 );
