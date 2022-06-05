@@ -20,5 +20,9 @@ $--colors: (
 );
 
 @forward "element-plus/theme-chalk/src/common/var.scss" with (
-  $colors: $--colors
+  $colors: $--colors,
+  $button: (
+    "text-color": #303133,
+    "active-text-color": #303133
+  )
 );

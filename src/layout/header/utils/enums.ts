@@ -50,7 +50,7 @@ export const colors = [
   {
     bg: "#13c2c2",
     text: "#fff",
-    key: "blue",
+    key: "skyblue",
     active: "#fff"
   },
   {

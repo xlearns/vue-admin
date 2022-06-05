@@ -55,8 +55,8 @@ function getDefaultActive(routePath) {
 }
 onMounted(() => {
   getDefaultActive(route.path);
-  // let { key } = getNavColor.value;
-  // key && myToggleTheme(key);
+  let { key } = getNavColor.value;
+  key && myToggleTheme(key);
 });
 
 watch(

@@ -23,7 +23,7 @@ function changeColor(
 ) {
   cur.value = index;
   setNavColor(item);
-  // myToggleTheme(item.key);
+  myToggleTheme(item.key);
 }
 </script>
 

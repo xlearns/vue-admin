@@ -28,6 +28,9 @@ export default ({ command, mode }: ConfigEnv) => {
       https: false,
       host: "0.0.0.0",
       port: VITE_PORT
+    },
+    optimizeDeps: {
+      exclude: ["@zougt/vite-plugin-theme-preprocessor/dist/browser-utils"]
     }
   };
 };
