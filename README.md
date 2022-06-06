@@ -24,6 +24,10 @@
 
 - [x] windicss
 
+- [ ] windicss 升级为 uncoss
+
+- [ ] keep-alive
+
 - [ ] 首页大屏模块
 
 - [ ] axios 封装

@@ -7,7 +7,9 @@ import NavModel from "./NavModel.vue";
 import Colors from "./Colors.vue";
 import { useTheme } from "@/hooks/useTheme";
 import { useMenuSetting } from "@/hooks/useMenuSetting";
+import { useDarkModel } from "@/hooks/useDarkModel";
 const { getNavColor } = useMenuSetting();
+let { isDark } = useDarkModel();
 let { t } = useI18n();
 let { navTheme } = useTheme();
 let drawer = ref(false);
@@ -30,8 +32,13 @@ function danger() {
     <AppDarkModeToggle class="flex justify-center" />
     <el-divider content-position="center">{{ t("settings.nav") }}</el-divider>
     <NavModel />
-    <el-divider content-position="center">{{ t("settings.color") }}</el-divider>
-    <Colors />
+    <div v-if="!isDark">
+      <el-divider content-position="center">{{
+        t("settings.color")
+      }}</el-divider>
+
+      <Colors />
+    </div>
     <el-divider content-position="center">{{ t("settings.show") }}</el-divider>
     <el-divider />
     <el-button type="danger" class="w-full" @click="danger">

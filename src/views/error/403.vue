@@ -7,7 +7,7 @@ defineOptions({
 
 <template>
   <div class="flex justify-center items-center h-screen-sm">
-    <noAccess />
+    <noAccess class="icon-svg" />
     <div class="ml-12">
       <p
         class="font-medium text-4xl mb-4"

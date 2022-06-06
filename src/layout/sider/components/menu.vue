@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref, watch, onMounted, computed, watchEffect } from "vue";
 import { useMenuSetting } from "@/hooks/useMenuSetting";
-import { useTheme } from "@/hooks/useTheme";
 import sidebarItem from "./sidebarItem.vue";
 import { usePermissionStoreWithOut } from "@/stores/modules/permission";
 import { useRoute, useRouter } from "vue-router";
@@ -10,9 +9,17 @@ import { useTagsView } from "@/hooks/useTagsView";
 import { useMenuNav } from "@/hooks/useMenuNav";
 import PageEnum from "@/enums/pageEnum";
 import AppLogo from "./logo.vue";
+import { useTheme } from "@/hooks/useTheme";
 
 const { handleTags, multiTags } = useTagsView();
 const { activeKey, close, contextMenuFn } = useMenuNav();
+const permissionStore = usePermissionStoreWithOut();
+const route = useRoute();
+const router = useRouter();
+const { navTheme } = useTheme();
+const { getNavColor, getMenuCollapse, initTheme } = useMenuSetting();
+let defaultActive = ref(null);
+
 defineProps({
   mode: {
     type: String,
@@ -22,13 +29,6 @@ defineProps({
   }
 });
 
-let defaultActive = ref(null);
-
-const permissionStore = usePermissionStoreWithOut();
-const route = useRoute();
-const router = useRouter();
-let { navTheme, myToggleTheme } = useTheme();
-const { getNavColor, getMenuCollapse, getMenuWidth } = useMenuSetting();
 function setIndex(res) {
   activeKey.value = multiTags.value.findIndex(item => item.path === res.path);
 }
@@ -55,8 +55,7 @@ function getDefaultActive(routePath) {
 }
 onMounted(() => {
   getDefaultActive(route.path);
-  let { key } = getNavColor.value;
-  key && myToggleTheme(key);
+  initTheme();
 });
 
 watch(

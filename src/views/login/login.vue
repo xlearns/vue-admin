@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { onMounted } from "vue";
 import { useI18n } from "vue-i18n";
 import { bg, currentWeek } from "./utils/static";
 import { useLogin } from "@/hooks/login/useLogin";
@@ -6,8 +7,13 @@ import Motion from "./component/Motion.vue";
 import LoginForm from "./component/LoginForm.vue";
 import RegisterForm from "./component/RegisterForm.vue";
 import { AppLocalePicker, AppDarkModeToggle } from "@/components/application";
+import { useMenuSetting } from "@/hooks/useMenuSetting";
+const { initTheme } = useMenuSetting();
 const { currentPage } = useLogin();
 let { t } = useI18n();
+onMounted(() => {
+  initTheme();
+});
 </script>
 <template>
   <AppDarkModeToggle class="absolute top-2 right-8" />
@@ -19,7 +25,7 @@ let { t } = useI18n();
     <div class="<lg:hidden flex justify-end items-center">
       <Motion>
         <!-- <component :is="currentWeek" /> -->
-        <currentWeek />
+        <currentWeek class="icon-svg" />
       </Motion>
     </div>
     <div class="<lg:justify-center flex items-center">

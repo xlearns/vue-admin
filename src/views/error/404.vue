@@ -8,7 +8,7 @@ defineOptions({
 
 <template>
   <div class="flex justify-center items-center h-screen-sm">
-    <noExist />
+    <noExist class="icon-svg" />
     <div class="ml-12">
       <p
         class="font-medium text-4xl mb-4"
