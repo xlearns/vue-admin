@@ -26,7 +26,10 @@ defineProps({
       <div class="h-172px">
         <Card showHeader>
           <template #header>
-            {{ item.title }}
+            <div class="flex justify-between">
+              <span> {{ item.title }}</span>
+              <el-tag>{{ item.time }}</el-tag>
+            </div>
           </template>
           {{ item.value }}
         </Card>

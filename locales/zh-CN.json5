@@ -17,6 +17,7 @@
   },
   menu: {
     root: "控制面板",
+    datavRoot: "数据大屏",
     error: "错误页面"
   },
   settings: {

@@ -14,8 +14,18 @@ Object.keys(modules).forEach(key => {
   routeModuleList.push(...modList);
 });
 
+function regulation() {
+  let arr = [...routeModuleList];
+  const index = routeModuleList.findIndex(v => {
+    return v.path == "/";
+  });
+  const newArr = arr.splice(index, 1);
+  arr = newArr.concat(arr);
+  return arr;
+}
 // addRouter动态加入路由
-export const asyncRoutes = [...routeModuleList];
+// export const asyncRoutes = [...routeModuleList];
+export const asyncRoutes = [...regulation()];
 
 //不需要展示菜单中
 export const remainingRouter = [
