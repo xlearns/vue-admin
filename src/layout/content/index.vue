@@ -1,7 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useMainElement } from "@/hooks/useMainElement";
+const { el } = useMainElement();
+</script>
 
 <template>
-  <el-main class="bg-[#f0f2f5] h-[100vh] !overflow-hidden">
+  <el-main ref="el" class="bg-[#f0f2f5] h-[100vh] !overflow-hidden">
     <el-scrollbar>
       <RouterView>
         <template #default="{ Component, route }">
@@ -40,6 +43,6 @@
 }
 
 .main-content {
-  margin: 24px;
+  margin: 0 24px;
 }
 </style>

@@ -5,7 +5,8 @@ import {
   LineChart,
   GraphChart,
   RadarChart,
-  FunnelChart
+  FunnelChart,
+  MapChart
 } from "echarts/charts";
 
 import {
@@ -29,6 +30,7 @@ import { SVGRenderer } from "echarts/renderers";
 const { use } = echarts;
 
 use([
+  MapChart,
   FunnelChart,
   RadarChart,
   PieChart,

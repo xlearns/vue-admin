@@ -19,6 +19,7 @@ specifiers:
   color: ^4.2.3
   cross-env: ^7.0.3
   echarts: ^5.3.2
+  echarts-map-chinajs: ^1.0.2
   element-plus: ^2.1.10
   eslint: ^8.13.0
   eslint-plugin-vue: ^8.6.0
@@ -44,6 +45,7 @@ specifiers:
   typescript: ~4.6.3
   unplugin-element-plus: ^0.4.0
   unplugin-vue-define-options: ^0.6.1
+  uuid: ^8.3.2
   vite: ^2.9.5
   vite-plugin-html: ^3.2.0
   vite-plugin-windicss: ^1.8.4
@@ -60,11 +62,13 @@ dependencies:
   '@vueuse/core': 8.2.6_vue@3.2.33
   '@vueuse/motion': 2.0.0-beta.12_vue@3.2.33
   echarts: 5.3.2
+  echarts-map-chinajs: 1.0.2
   element-plus: 2.1.10_vue@3.2.33
   lodash-es: 4.17.21
   nprogress: 0.2.0
   path-to-regexp: 6.2.1
   pinia: 2.0.13_typescript@4.6.3+vue@3.2.33
+  uuid: 8.3.2
   vue: 3.2.33
   vue-i18n: 9.1.10_vue@3.2.33
   vue-router: 4.0.14_vue@3.2.33
@@ -2041,6 +2045,10 @@ packages:
   /eastasianwidth/0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
     dev: true
+
+  /echarts-map-chinajs/1.0.2:
+    resolution: {integrity: sha512-5P0UATqLGO4kLGrmxGhzugOaTmOzEJNdceir7niOXQnjGQUs1fvuyB4psqSbLiSYOksYr4yVXMnpxf6pRRjm1g==}
+    dev: false
 
   /echarts/5.3.2:
     resolution: {integrity: sha512-LWCt7ohOKdJqyiBJ0OGBmE9szLdfA9sGcsMEi+GGoc6+Xo75C+BkcT/6NNGRHAWtnQl2fNow05AQjznpap28TQ==}
@@ -4812,7 +4820,6 @@ packages:
   /uuid/8.3.2:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
     hasBin: true
-    dev: true
 
   /v8-compile-cache-lib/3.0.1:
     resolution: {integrity: sha512-wa7YjyUGfNZngI/vtK0UHAN+lgDCxBPCylVXGp0zu59Fz5aiGtNXaq3DhIov063MorB+VfufLh3JlF2KdTK3xg==}

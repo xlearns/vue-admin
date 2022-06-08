@@ -28,7 +28,7 @@ function fn(type, bool: boolean) {
       :disabled="leftRight(index)"
       @click="fn(item.key, !isdisable && index != 5)"
     >
-      <Icon :icon="item.url" />
+      <Icon class="inline-block" :icon="item.url" />
       {{ item.name }}</context-menu-item
     >
   </context-menu>
