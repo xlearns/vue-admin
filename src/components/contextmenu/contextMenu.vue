@@ -14,8 +14,12 @@ watch(
 );
 const emit = defineEmits(["contextMenuFn"]);
 
-function fn(type, bool: boolean) {
-  if (bool) return;
+function fn(type, bool: boolean, index) {
+  if (!bool) {
+    if (activeKey.value == -1) {
+      if (index != 0 && index != 5) return;
+    }
+  } else if (index != 5) return;
   emit("contextMenuFn", type);
 }
 </script>
@@ -26,7 +30,7 @@ function fn(type, bool: boolean) {
       v-for="(item, index) in tagsData"
       :key="index"
       :disabled="leftRight(index)"
-      @click="fn(item.key, !isdisable && index != 5)"
+      @click="fn(item.key, !isdisable, index)"
     >
       <Icon class="inline-block" :icon="item.url" />
       {{ item.name }}</context-menu-item

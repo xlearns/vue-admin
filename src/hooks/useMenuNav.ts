@@ -74,14 +74,23 @@ const isdisable = computed(() => {
 
 function leftRight(index) {
   let res = !isdisable.value;
-
-  if (!res && index == 2) {
-    res = !ableRight.value;
-  } else if (!res && index == 3) {
-    res = !ableLeft.value;
-  } else if (index == 5) {
+  if (activeKey.value == -1) {
+    if (!res && index == 0) {
+      res = false;
+    } else {
+      res = true;
+    }
+  } else {
+    if (!res && index == 2) {
+      res = !ableRight.value;
+    } else if (!res && index == 3) {
+      res = !ableLeft.value;
+    }
+  }
+  if (index == 5) {
     res = false;
   }
+
   return res;
 }
 function reload() {

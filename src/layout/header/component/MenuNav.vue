@@ -56,7 +56,7 @@ function fn(type, bool: boolean) {
         class="scroll-item mr-1"
         :class="{ active: activeKey === -1 }"
         @click="gohome"
-        @contextmenu.native="openContextMenu"
+        @contextmenu="openContextMenu($event, -1)"
         >首页
       </el-tag>
 
