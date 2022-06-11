@@ -18,7 +18,8 @@
   menu: {
     root: "dashboard",
     datavRoot: "data screen",
-    error: "error page"
+    error: "error page",
+    componentsRoot:"components"
   },
   settings: {
     title: "Project configuration",

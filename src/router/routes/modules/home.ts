@@ -4,6 +4,7 @@ const homeRouter = [
   {
     path: "/",
     name: "Root",
+    key: 0,
     component: () => import("@/layout/index.vue"),
     redirect: PageEnum.BASE_HOME,
     meta: {

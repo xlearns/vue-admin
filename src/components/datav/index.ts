@@ -1,3 +1,4 @@
 import FullScreen from "./FullScreen/index.vue";
 import Border from "./border/index.vue";
-export { FullScreen, Border };
+import DvBorderBox13 from "./border/DvBorderBox13.vue";
+export { FullScreen, Border, DvBorderBox13 };

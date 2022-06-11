@@ -1,6 +1,6 @@
 <template>
   <div class="vdata-border-flybox" ref="flybox">
-    <svg :width:="width" :height:="height">
+    <svg :width="width" :height="height">
       <defs>
         <path :id="borderid" fill="none" :d="path" />
         <radialGradient

@@ -1,0 +1,26 @@
+import PageEnum from "@/enums/pageEnum";
+const ComponentsRouter = [
+  {
+    path: "/components",
+    name: "componentsRoot",
+    key: 2,
+    component: () => import("@/layout/index.vue"),
+    redirect: "/components/video",
+    meta: {
+      title: "componentsRoot",
+      icon: "radix-icons:component-2"
+    },
+    children: [
+      {
+        path: "/components/video",
+        name: "cpvideo",
+        component: () => import("@/views/components/video/index.vue"),
+        meta: {
+          title: "视频组件"
+        }
+      }
+    ]
+  }
+];
+
+export default ComponentsRouter;

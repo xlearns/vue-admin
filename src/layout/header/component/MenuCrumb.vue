@@ -76,7 +76,7 @@ watch(
       <span v-if="!route.isable" class="text-[#97a8be]">{{
         route.meta.title
       }}</span>
-      <a v-else> {{ route.meta.title }}</a>
+      <a v-else> {{ t(`menu.${route.meta.title}`) }}</a>
     </el-breadcrumb-item>
   </el-breadcrumb>
 </template>

@@ -14,6 +14,14 @@ Object.keys(modules).forEach(key => {
   routeModuleList.push(...modList);
 });
 
+function routerSort() {
+  const arr = [...routeModuleList];
+  const newArr = arr.sort((a, b) => {
+    return a.key - b.key;
+  });
+  return newArr;
+}
+
 function regulation() {
   let arr = [...routeModuleList];
   const index = routeModuleList.findIndex(v => {
@@ -25,7 +33,7 @@ function regulation() {
 }
 // addRouter动态加入路由
 // export const asyncRoutes = [...routeModuleList];
-export const asyncRoutes = [...regulation()];
+export const asyncRoutes = [...routerSort()];
 
 //不需要展示菜单中
 export const remainingRouter = [
