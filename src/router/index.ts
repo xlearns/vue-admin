@@ -21,7 +21,7 @@ getRouteNames(basicRoutes);
 export const router = createRouter({
   history: createWebHashHistory(import.meta.env.VITE_PUBLIC_PATH),
   routes: [
-    ...RemainingRouter.concat(basicRoutes)
+    ...RemainingRouter.concat(basicRoutes as any)
   ] as unknown as RouteRecordRaw[],
   // 不允许尾部的斜线
   strict: true,

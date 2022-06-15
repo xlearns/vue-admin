@@ -24,13 +24,15 @@
 
 - [x] windicss
 
+- [x] 首页大屏模块
+
+- [x] axios 封装
+
+- [ ] 所有组件加上测试
+
 - [ ] windicss 升级为 uncoss
 
 - [ ] keep-alive
-
-- [x] 首页大屏模块
-
-- [ ] axios 封装
 
 - [ ] 菜单搜索
 

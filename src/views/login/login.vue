@@ -8,6 +8,11 @@ import LoginForm from "./component/LoginForm.vue";
 import RegisterForm from "./component/RegisterForm.vue";
 import { AppLocalePicker, AppDarkModeToggle } from "@/components/application";
 import { useMenuSetting } from "@/hooks/useMenuSetting";
+import { http } from "@/utils/http";
+function login(data?) {
+  return http.request("post", "api/login", { data });
+}
+
 const { initTheme } = useMenuSetting();
 const { currentPage } = useLogin();
 let { t } = useI18n();

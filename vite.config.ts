@@ -1,6 +1,6 @@
 import type { ConfigEnv } from "vite";
 import { loadEnv } from "vite";
-import { wrapperEnv } from "./build/utils";
+import { createProxy, wrapperEnv } from "./build/utils";
 import alias from "./build/vite/alias";
 import { getPluginsList } from "./build/vite/plugin/index";
 // https://vitejs.dev/config/
@@ -8,13 +8,7 @@ export default ({ command, mode }: ConfigEnv) => {
   const root = process.cwd();
   const env = loadEnv(mode, root);
   const viteEnv = wrapperEnv(env);
-  const {
-    VITE_PORT,
-    VITE_LEGACY,
-    VITE_PUBLIC_PATH,
-    VITE_PROXY_DOMAIN,
-    VITE_PROXY_DOMAIN_REAL
-  } = viteEnv;
+  const { VITE_PORT, VITE_PUBLIC_PATH, VITE_PROXY } = viteEnv;
   const isBuild = command === "build";
   return {
     plugins: getPluginsList(viteEnv, isBuild),
@@ -27,7 +21,8 @@ export default ({ command, mode }: ConfigEnv) => {
     server: {
       https: false,
       host: "0.0.0.0",
-      port: VITE_PORT
+      port: VITE_PORT,
+      proxy: createProxy(VITE_PROXY)
     },
     optimizeDeps: {
       exclude: ["@zougt/vite-plugin-theme-preprocessor/dist/browser-utils"]

@@ -11,7 +11,7 @@ import configHtmlPlugin from "./html";
 import themePlugs from "./theme";
 import DefineOptions from "unplugin-vue-define-options/vite";
 
-export function getPluginsList(viteEnv, VITE_LEGACY) {
+export function getPluginsList(viteEnv, isbuild) {
   const vitePlugins: (PluginOption | PluginOption[])[] = [
     vue(),
     ElementPlus({ useSource: true }),
@@ -28,6 +28,6 @@ export function getPluginsList(viteEnv, VITE_LEGACY) {
     themePlugs()
   ];
   // vite-plugin-html
-  vitePlugins.push(configHtmlPlugin(viteEnv, VITE_LEGACY));
+  vitePlugins.push(configHtmlPlugin(viteEnv, isbuild));
   return vitePlugins;
 }
