@@ -38,6 +38,11 @@ function fn(type, bool: boolean, index) {
   </context-menu>
 </template>
 
+<style>
+.v-contextmenu {
+  z-index: 9999;
+}
+</style>
 <style scoped>
 :deep(.v-contextmenu-item) {
   padding: 5px 10px;
