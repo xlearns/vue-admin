@@ -10,7 +10,7 @@ import MenuNav from "./component/MenuNav.vue";
 import { useTheme } from "@/hooks/useTheme";
 import { AppLocalePicker } from "@/components/application";
 import { useMenuSetting } from "@/hooks/useMenuSetting";
-const { getNavColor } = useMenuSetting();
+const { getNavColor, getSiderShow } = useMenuSetting();
 let { navTheme } = useTheme();
 </script>
 
@@ -27,7 +27,7 @@ let { navTheme } = useTheme();
       <div>
         <div v-if="navTheme == 0" class="flex items-center">
           <MenuEvent class="mr-2" />
-          <MenuCrumb />
+          <MenuCrumb v-if="getSiderShow" />
         </div>
       </div>
       <div class="flex justify-end items-center h-full">
