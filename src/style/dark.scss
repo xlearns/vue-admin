@@ -20,6 +20,19 @@
     color: #000 !important;
   }
 
+  .el-button--text {
+    color: #96979b;
+  }
+
+  .el-tabs__item.is-active,
+  .el-checkbox__input.is-checked + .el-checkbox__label {
+    color: rgb(59 130 246 / 50%);
+  }
+
+  .el-tabs__active-bar {
+    background-color: rgb(59 130 246 / 50%);
+  }
+
   .el-overlay {
     background-color: rgb(0 0 0 / 5%) !important;
   }
