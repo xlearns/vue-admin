@@ -12,20 +12,20 @@ const { toggle } = useFullscreen();
 </script>
 
 <template>
-  <div
-    class="box"
-    @click="toggle"
-    :style="{ color: navTheme == 1 ? getNavColor.text : '#000' }"
+  <el-tooltip
+    class="box-item"
+    effect="dark"
+    :content="t('settings.fullScreen')"
+    placement="bottom"
   >
-    <el-tooltip
-      class="box-item"
-      effect="dark"
-      :content="t('settings.fullScreen')"
-      placement="bottom"
+    <div
+      class="box"
+      @click="toggle"
+      :style="{ color: navTheme == 1 ? getNavColor.text : '#000' }"
     >
       <Icon class="w-[16px] h-[16px]" icon="ep:full-screen" />
-    </el-tooltip>
-  </div>
+    </div>
+  </el-tooltip>
 </template>
 
 <style scoped>

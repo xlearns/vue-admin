@@ -7,6 +7,7 @@ import User from "./component/User.vue";
 import MenuEvent from "./component/MenuEvent.vue";
 import MenuCrumb from "./component/MenuCrumb.vue";
 import MenuNav from "./component/MenuNav.vue";
+import Search from "./component/Search.vue";
 import { useTheme } from "@/hooks/useTheme";
 import { AppLocalePicker } from "@/components/application";
 import { useMenuSetting } from "@/hooks/useMenuSetting";
@@ -31,6 +32,7 @@ let { navTheme } = useTheme();
         </div>
       </div>
       <div class="flex justify-end items-center h-full">
+        <Search />
         <Notice />
         <AppFull />
         <AppLocalePicker />
