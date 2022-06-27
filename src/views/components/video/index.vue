@@ -34,6 +34,6 @@ onMounted(() => {
 
 <style scoped>
 #mse {
-  flex: auto;
+  /* flex: auto; */
 }
 </style>

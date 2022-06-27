@@ -1,6 +1,7 @@
 declare global {
   type Recordable<T = any> = Record<string, T>;
   type Fn = (...arg: any) => any;
+  type Nullable<T> = T | null;
   interface ViteEnv {
     VITE_PORT: number;
     VITE_PUBLIC_PATH: string;

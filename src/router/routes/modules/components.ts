@@ -18,6 +18,14 @@ const ComponentsRouter = [
         meta: {
           title: "视频组件"
         }
+      },
+      {
+        path: "/components/scroll",
+        name: "cpscroll",
+        component: () => import("@/views/components/seamlessScroll/index.vue"),
+        meta: {
+          title: "滚动组件"
+        }
       }
     ]
   }

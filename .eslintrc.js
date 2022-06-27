@@ -4,6 +4,9 @@ module.exports = {
     es2021: true
   },
   parser: "vue-eslint-parser",
+  globals: {
+    ElRef: "readonly"
+  },
   extends: [
     "eslint:recommended",
     "plugin:vue/essential",
@@ -19,11 +22,12 @@ module.exports = {
     "no-undef": "off",
     "vue/no-multiple-template-root": "off",
     "vue/multi-word-component-names": "off",
-    "@typescript-eslint/no-empty-function": "off",
     "no-debugger": "off",
     "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-this-alias": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/no-empty-function": "off",
     "prefer-rest-params": "off",
     "vue/no-mutating-props": "off"
   }
