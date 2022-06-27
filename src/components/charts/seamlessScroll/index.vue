@@ -13,7 +13,8 @@ animationFrame();
 
 const props = defineProps({
   data: {
-    type: Array as PropType<unknown>
+    type: Array as PropType<unknown>,
+    default: () => []
   },
   classOption: {
     type: Object as PropType<unknown>
