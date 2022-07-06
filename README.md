@@ -39,3 +39,5 @@
 - [ ] keep-alive
 
 - [ ] element plus 按需引入导致 vite 加载过慢
+
+- [ ] 封装表格组件
