@@ -38,7 +38,11 @@ function collapse() {
       <Icon
         width="100%"
         height="100%"
-        icon="quill:hamburger-sidebar"
+        :icon="
+          getMenuCollapse || !getSiderShow
+            ? 'lucide:sidebar-close'
+            : 'lucide:sidebar-open'
+        "
         :horizontalFlip="true"
         :verticalFlip="true"
       />

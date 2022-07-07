@@ -28,12 +28,16 @@
 
 - [x] axios 封装
 
+- [ ] Mock
+
+- [ ] 菜单搜索
+
 - [ ] 所有组件加上测试
 
 - [ ] windicss 升级为 uncoss
 
 - [ ] keep-alive
 
-- [ ] 菜单搜索
-
 - [ ] element plus 按需引入导致 vite 加载过慢
+
+- [ ] 封装表格组件 

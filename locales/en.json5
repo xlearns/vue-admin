@@ -19,7 +19,7 @@
     root: "dashboard",
     datavRoot: "data screen",
     error: "error page",
-    componentsRoot:"components"
+    componentsRoot: "components"
   },
   settings: {
     title: "Project configuration",
@@ -28,6 +28,7 @@
     theme: "theme",
     color: "subject color",
     show: "tag show",
-    fullScreen: "full screen"
+    fullScreen: "full screen",
+    search: "Search"
   }
 }
