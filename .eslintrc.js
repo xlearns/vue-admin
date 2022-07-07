@@ -19,6 +19,7 @@ module.exports = {
   },
   plugins: ["vue", "@typescript-eslint"],
   rules: {
+    "vue/no-v-for-template-key": "off",
     "no-undef": "off",
     "vue/no-multiple-template-root": "off",
     "vue/multi-word-component-names": "off",
