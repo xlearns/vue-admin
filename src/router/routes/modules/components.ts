@@ -26,6 +26,14 @@ const ComponentsRouter = [
         meta: {
           title: "滚动组件"
         }
+      },
+      {
+        path: "/components/table",
+        name: "cpvideo",
+        component: () => import("@/views/components/table/index.vue"),
+        meta: {
+          title: "表格组件"
+        }
       }
     ]
   }
