@@ -28,6 +28,6 @@ const { toggle } = useFullscreen();
   </el-tooltip>
 </template>
 
-<style scoped>
-@import "./index.scss";
+<style lang="scss" scoped>
+@use "index";
 </style>

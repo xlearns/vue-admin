@@ -37,8 +37,8 @@ function click() {
   </div>
 </template>
 
-<style scoped>
-@import "./index.scss";
+<style lang="scss" scoped>
+@use "index";
 </style>
 <style scoped>
 :deep(.el-dialog__header) {

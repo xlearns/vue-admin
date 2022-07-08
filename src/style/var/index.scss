@@ -1,5 +1,6 @@
-@import "../color.scss";
-@import "easing.scss";
-@import "breakpoint.scss";
+@forward "color";
+@forward "mixin";
+@forward "easing";
+@forward "breakpoint";
 
 $namespace: datav;

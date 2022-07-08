@@ -3,9 +3,11 @@ let test = ref("hello");
 </script>
 
 <template>
-  <div>
+  <div class="test">
     {{ test }}
   </div>
 </template>
 
-<style scoped></style>
+<style lang="scss" scoped>
+@use "@/style/component/table";
+</style>

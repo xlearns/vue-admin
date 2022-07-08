@@ -1,5 +1,5 @@
-@import "var/index.scss";
-@import "./dark.scss";
+@use "var/index";
+@use "dark";
 
 body {
   margin: 0;

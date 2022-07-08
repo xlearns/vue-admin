@@ -24,8 +24,22 @@ export default ({ command, mode }: ConfigEnv) => {
       port: VITE_PORT,
       proxy: createProxy(VITE_PROXY)
     },
+    // 设置全局scss变量
+    // css: {
+    //   preprocessorOptions: {
+    //     scss: {
+    //       additionalData: `@import "@/style/var/index.scss";`
+    //     }
+    //   }
+    // },
     optimizeDeps: {
+      include: ["pinia", "vue-i18n", "lodash-es", "@vueuse/core"],
       exclude: ["@zougt/vite-plugin-theme-preprocessor/dist/browser-utils"]
+    },
+    build: {
+      sourcemap: false,
+      brotliSize: false,
+      chunkSizeWarningLimit: 4000
     }
   };
 };

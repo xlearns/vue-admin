@@ -33,6 +33,6 @@ const menuWidth = computed(() => {
   </el-aside>
 </template>
 
-<style scoped>
-@import "./index.scss";
+<style lang="scss" scoped>
+@use "index";
 </style>

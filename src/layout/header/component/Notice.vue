@@ -39,6 +39,6 @@ let { navTheme } = useTheme();
   </div>
 </template>
 
-<style scoped>
-@import "./index.scss";
+<style lang="scss" scoped>
+@use "index";
 </style>

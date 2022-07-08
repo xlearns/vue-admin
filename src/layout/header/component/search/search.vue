@@ -9,8 +9,6 @@ defineProps({
     default: false
   }
 });
-/** 菜单树形结构 */
-console.log(asyncRoutes);
 
 const search = ref("");
 const res = ref([]);

@@ -5,5 +5,3 @@ import ReTable from "@c/table";
 <template>
   <div><ReTable /></div>
 </template>
-
-<style scoped></style>

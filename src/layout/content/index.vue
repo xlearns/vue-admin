@@ -24,7 +24,7 @@ const { el } = useMainElement();
   </el-main>
 </template>
 <!-- <style scoped>
-@import "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css";
+@use "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css";
 </style> -->
 <style scoped>
 .route-animate-enter-active,

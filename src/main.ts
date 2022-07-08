@@ -9,7 +9,7 @@ import { MotionPlugin } from "@vueuse/motion";
 import ElementPlus from "element-plus";
 import directives from "@/directives";
 // 导入公共样式
-import "./style/index.scss";
+import "@/style/index.scss";
 import "element-plus/dist/index.css";
 import { setupRouterGuard } from "@/router/guard";
 // 国际化

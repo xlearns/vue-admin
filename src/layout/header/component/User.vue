@@ -18,6 +18,6 @@ const { logout } = useLogin();
   </el-dropdown>
 </template>
 
-<style scoped>
-@import "./index.scss";
+<style lang="scss" scoped>
+@use "index";
 </style>

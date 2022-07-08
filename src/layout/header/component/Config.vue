@@ -47,6 +47,6 @@ function danger() {
   </el-drawer>
 </template>
 
-<style scoped>
-@import "./index.scss";
+<style lang="scss" scoped>
+@use "index";
 </style>

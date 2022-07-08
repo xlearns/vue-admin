@@ -1,0 +1,6 @@
+@use "sass:map";
+@use "../var/index" as *;
+
+.test {
+  @include test;
+}
