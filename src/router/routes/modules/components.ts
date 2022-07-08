@@ -29,7 +29,7 @@ const ComponentsRouter = [
       },
       {
         path: "/components/table",
-        name: "cpvideo",
+        name: "cptable",
         component: () => import("@/views/components/table/index.vue"),
         meta: {
           title: "表格组件"
