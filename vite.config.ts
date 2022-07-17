@@ -19,7 +19,7 @@ export default ({ command, mode }: ConfigEnv) => {
     },
     // 服务端渲染
     server: {
-      https: false,
+      https: true,
       host: "0.0.0.0",
       port: VITE_PORT,
       proxy: createProxy(VITE_PROXY)
@@ -33,7 +33,16 @@ export default ({ command, mode }: ConfigEnv) => {
     //   }
     // },
     optimizeDeps: {
-      include: ["pinia", "vue-i18n", "lodash-es", "@vueuse/core"],
+      include: [
+        "element-plus/es",
+        "element-plus/es/components/message/style/css",
+        "element-plus/es/components/notification/style/css",
+        "element-plus/es/components/message-box/style/css",
+        "pinia",
+        "vue-i18n",
+        "lodash-es",
+        "@vueuse/core"
+      ],
       exclude: ["@zougt/vite-plugin-theme-preprocessor/dist/browser-utils"]
     },
     build: {

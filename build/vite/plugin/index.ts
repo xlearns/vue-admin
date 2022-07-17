@@ -10,6 +10,7 @@ import VueI18n from "@intlify/vite-plugin-vue-i18n";
 import configHtmlPlugin from "./html";
 import themePlugs from "./theme";
 import DefineOptions from "unplugin-vue-define-options/vite";
+import Mkcert from "vite-plugin-mkcert";
 import auto from "./auto";
 
 export function getPluginsList(viteEnv, isbuild) {
@@ -27,7 +28,8 @@ export function getPluginsList(viteEnv, isbuild) {
     WindiCSS(),
     DefineOptions(),
     svgLoader(),
-    themePlugs()
+    themePlugs(),
+    Mkcert()
   ];
   // vite-plugin-html
   vitePlugins.push(configHtmlPlugin(viteEnv, isbuild));
