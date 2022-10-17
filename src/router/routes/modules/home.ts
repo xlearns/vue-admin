@@ -19,6 +19,14 @@ const homeRouter = [
         meta: {
           title: "welcome"
         }
+      },
+      {
+        path: "/grid",
+        name: "grid",
+        component: () => import("@/views/welcome/grid.vue"),
+        meta: {
+          title: "grid布局"
+        }
       }
     ]
   }
