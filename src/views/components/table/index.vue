@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { h } from "vue";
+import { h, ref, watchEffect } from "vue";
 import ReTable from "@c/table";
+const table = ref();
 const tableData = Array.from({ length: 100 }, (_, i) => ({
   index: i,
   name: "John Brown",
@@ -25,7 +26,20 @@ const columns = [
   },
   {
     label: "角色标识",
-    prop: "code"
+    prop: "code",
+    render({ row }) {
+      return h(
+        "a",
+        {
+          href: "javascript:;",
+          style: "text-decoration:revert",
+          onClick: () => {
+            console.log(1);
+          }
+        },
+        row
+      );
+    }
   },
   {
     label: "角色类型",
@@ -52,11 +66,21 @@ function click(_) {
   console.log(_.data.row);
   alert(JSON.stringify(_.data.row));
 }
+
+watchEffect(() => {
+  console.log(table.value?.multipleSelection);
+});
 </script>
 
 <template>
   <div class="w-full h-full border-box">
-    <ReTable :tableData="tableData" :headData="columns" :height="470">
+    <ReTable
+      :tableData="tableData"
+      :headData="columns"
+      :height="470"
+      :selection="true"
+      ref="table"
+    >
       <template v-slot="data">
         <el-button type="primary" @click="click(data)"> 修改 </el-button>
       </template>

@@ -10,7 +10,7 @@ const handleSelectionChange = (val: unknown[]) => {
   multipleSelection.value = val;
 };
 
-defineExpose([multipleSelection]);
+defineExpose({ multipleSelection });
 </script>
 <template>
   <ElTable
