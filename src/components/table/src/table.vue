@@ -1,111 +1,60 @@
 <script setup lang="ts">
-import { Icon } from "@iconify/vue";
-interface props {
-  data: any[];
-  columns: any[];
-}
-const iconAttr = [
-  "bx:refresh",
-  "ant-design:column-height-outlined",
-  "ep:setting"
-];
-const attrs = useAttrs();
-const { columns } = defineProps<props>();
-const column = ref(columns);
-const buttonRef = ref();
-const popoverRef = ref();
-const tableSize = ref("large");
-function change(val, index) {
-  column.value[index].hide = val;
-}
-function changeSize(val) {
-  tableSize.value = val;
-}
+import { ref, useSlots } from "vue";
+import { tableProps } from "./table";
+import Render from "./render";
+const multipleSelection = ref<unknown[]>([]);
 
-const onClickOutside = () => {
-  unref(popoverRef).popperRef?.delayHide?.();
+defineProps(tableProps);
+
+const handleSelectionChange = (val: unknown[]) => {
+  multipleSelection.value = val;
 };
 
-watchEffect(() => {
-  column.value = columns.map(v => {
-    return {
-      hide: true,
-      ...v
-    };
-  });
-});
+defineExpose([multipleSelection]);
 </script>
-
 <template>
-  <div class="title">
-    <div class="flex justify-end">
-      <div
-        v-for="(i, num) in iconAttr"
-        :class="`w-[24px] h-[24px] my-[12px] cursor-pointer ${
-          num < iconAttr.length - 1 ? 'mr-[12px]' : ''
-        } `"
-        :key="i"
-      >
-        <el-popover
-          placement="bottom"
-          :width="400"
-          trigger="click"
-          v-if="num == iconAttr.length - 1"
-        >
-          <template #reference>
-            <div><Icon width="100%" height="100%" :icon="i" /></div>
-          </template>
-
-          <ElCheckbox
-            class="w-full"
-            @change="val => change(val, index)"
-            v-for="(col, index) in column"
-            :key="col"
-            :label="col.label"
-            size="large"
-            v-model="col.hide"
+  <ElTable
+    class="w-full h-full"
+    :height="height"
+    :data="tableData"
+    :cell-style="cellStyle"
+    :row-style="rowState"
+    :header-cell-style="headercellStyle"
+    :header-row-style="c => cellStyle(c, true)"
+    @selection-change="handleSelectionChange"
+  >
+    <ElTableColumn type="selection" width="55" v-if="selection" />
+    <ElTableColumn
+      v-for="(item, index) in headData"
+      :align="item.align || 'center'"
+      :key="index"
+      :prop="item.prop"
+      :label="item.label"
+      :width="item.width"
+    >
+      <template #default="scope">
+        <span v-if="item.render">
+          <Render
+            :row="scope.row[item.prop]"
+            :column="item.prop"
+            :render="item.render"
           />
-        </el-popover>
-
-        <ElDropdown v-else-if="num == 1" trigger="click">
-          <Icon width="100%" height="100%" :icon="i" />
-          <template #dropdown>
-            <el-dropdown-menu>
-              <el-dropdown-item
-                v-for="({ val, name }, sizeIndex) in [
-                  { val: 'large', name: '松散' },
-                  { val: 'default', name: '默认' },
-                  { val: 'small', name: '紧凑' }
-                ]"
-                :key="sizeIndex"
-                @click="changeSize(val)"
-                >{{ name }}</el-dropdown-item
-              >
-            </el-dropdown-menu>
-          </template>
-        </ElDropdown>
-
-        <Icon width="100%" height="100%" :icon="i" v-else />
-      </div>
-    </div>
-  </div>
-  <ElTable :data="data" tyle="width: 100%" :="attrs" :size="tableSize">
-    <template v-for="col in column" :key="col">
-      <ElTableColumn
-        v-if="col.hide"
-        :type="col.type"
-        :prop="col.prop"
-        :label="col.label"
-        :fixed="col.fixed || false"
-        :width="col.width || 'auto'"
-      >
-        <slot v-if="col.slot" :name="col.slot"></slot>
-      </ElTableColumn>
-    </template>
+        </span>
+        <span v-else-if="item.formatter">
+          {{ item.formatter(scope.row[item.prop]) }}
+        </span>
+        <span v-else>{{ scope.row[item.prop] }}</span>
+      </template>
+    </ElTableColumn>
+    <ElTableColumn
+      v-if="useSlots().default"
+      :align="action.align || 'center'"
+      :width="action.width"
+    >
+      <template #header>{{ action.title || "操作" }}</template>
+      <template #default="scope">
+        <slot :data="scope" />
+      </template>
+    </ElTableColumn>
   </ElTable>
-  <!-- <ElPagination :="attrs" @currentChange="handleCurrentChange" /> -->
 </template>
-
-<style lang="scss" scoped>
-@use "@/style/component/table";
-</style>

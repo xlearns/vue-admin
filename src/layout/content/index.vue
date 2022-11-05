@@ -12,11 +12,7 @@ const { el } = useMainElement();
              缓存
         -->
           <transition name="route-animate" mode="out-in" appear>
-            <component
-              :is="Component"
-              :key="route.fullPath"
-              class="main-content"
-            />
+            <component :is="Component" :key="route.fullPath" />
           </transition>
         </template>
       </RouterView>
@@ -40,9 +36,5 @@ const { el } = useMainElement();
 .route-animate-leave-to {
   opacity: 0;
   transform: translateX(30px);
-}
-
-.main-content {
-  margin: 0 24px;
 }
 </style>

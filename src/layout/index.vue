@@ -29,4 +29,3 @@ const layoutClass = computed(() => {
   </el-container>
 </template>
 
-<style scoped></style>

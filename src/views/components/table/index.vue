@@ -1,7 +1,8 @@
 <script setup lang="ts">
+import { h } from "vue";
 import ReTable from "@c/table";
-const tableData = Array.from({ length: 10 }, () => ({
-  id: 1,
+const tableData = Array.from({ length: 100 }, (_, i) => ({
+  index: i,
   name: "John Brown",
   age: 18,
   address: "New York No. 1 Lake Park",
@@ -12,22 +13,11 @@ const tableData = Array.from({ length: 10 }, () => ({
   createTime: Date.now()
 }));
 
-const columns = ref([
-  {
-    type: "selection",
-    width: 55,
-    label: "勾选列"
-  },
+const columns = [
   {
     label: "序号",
-    type: "index",
-    width: 70,
-    hide: false
-  },
-  {
-    label: "角色编号",
-    prop: "id",
-    hide: false
+    prop: "index",
+    width: 70
   },
   {
     label: "角色名称",
@@ -39,33 +29,36 @@ const columns = ref([
   },
   {
     label: "角色类型",
-    prop: "type",
-    cellRenderer: ({ row, props }) => {}
+    prop: "type"
   },
   {
     label: "显示顺序",
-    prop: "sort"
+    prop: "sort",
+    render: ({ row, column }) => {
+      return h("div", { style: { color: "red" } }, row + column);
+    }
   },
   {
     label: "创建时间",
     width: 180,
     prop: "createTime",
-    formatter: ({ createTime }) => {}
-  },
-  {
-    label: "操作",
-    fixed: "right",
-    width: 180,
-    slot: "operation"
+    formatter: (val: string) => {
+      return new Date(val).toLocaleString();
+    }
   }
-]);
+];
+
+function click(_) {
+  console.log(_.data.row);
+  alert(JSON.stringify(_.data.row));
+}
 </script>
 
 <template>
-  <div>
-    <ReTable :data="tableData" :columns="columns" :border="true">
-      <template #operation>
-        <el-button type="primary"> 修改 </el-button>
+  <div class="w-full h-full border-box">
+    <ReTable :tableData="tableData" :headData="columns" :height="470">
+      <template v-slot="data">
+        <el-button type="primary" @click="click(data)"> 修改 </el-button>
       </template>
     </ReTable>
   </div>
