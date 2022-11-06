@@ -15,7 +15,7 @@ defineExpose({ multipleSelection });
 <template>
   <ElTable
     class="w-full h-full"
-    :height="height"
+    :max-height="height"
     :data="tableData"
     :cell-style="cellStyle"
     :row-style="rowState"
@@ -50,10 +50,13 @@ defineExpose({ multipleSelection });
       v-if="useSlots().default"
       :align="action.align || 'center'"
       :width="action.width"
+      fixed="right"
     >
       <template #header>{{ action.title || "操作" }}</template>
       <template #default="scope">
-        <slot :data="scope" />
+        <div class="el-table-col-action">
+          <slot :data="scope" />
+        </div>
       </template>
     </ElTableColumn>
   </ElTable>

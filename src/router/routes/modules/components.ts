@@ -28,11 +28,19 @@ const ComponentsRouter = [
         }
       },
       {
+        path: "/components/basetable",
+        name: "basetable",
+        component: () => import("@/views/components/baseTable/index.vue"),
+        meta: {
+          title: "基础表格组件"
+        }
+      },
+      {
         path: "/components/table",
-        name: "cptable",
+        name: "table",
         component: () => import("@/views/components/table/index.vue"),
         meta: {
-          title: "表格组件"
+          title: "集成表格组件"
         }
       }
     ]
