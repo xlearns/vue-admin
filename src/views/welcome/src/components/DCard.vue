@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Card from "@/components/card/index.vue";
+import Card from "@c/card";
 
 defineProps({
   data: {

@@ -1,7 +1,36 @@
 <script setup lang="ts">
 import { h, ref, watchEffect } from "vue";
 import ReTable from "@c/table";
+import ReCard from "@c/card";
 const table = ref();
+const action = [
+  {
+    name: "刷新",
+    type: "function",
+    icon: "",
+    render: () => {
+      alert(1);
+    }
+  },
+  {
+    name: "密度",
+    type: "component",
+    icon: "",
+    render: () => {
+      return h("div", { style: { color: "red" } }, 1);
+    }
+  },
+  {
+    name: "列设置",
+    type: "component",
+    icon: "",
+    width: 200,
+    render: () => {
+      return h("div", { style: { color: "blue" } }, 1);
+    }
+  }
+];
+const tooptipDom = ref();
 const tableData = Array.from({ length: 100 }, (_, i) => ({
   index: i,
   name: "John Brown",
@@ -74,16 +103,60 @@ watchEffect(() => {
 
 <template>
   <div class="w-full h-full border-box">
-    <ReTable
-      :tableData="tableData"
-      :headData="columns"
-      :height="470"
-      :selection="true"
-      ref="table"
-    >
-      <template v-slot="data">
-        <el-button type="primary" @click="click(data)"> 修改 </el-button>
+    <el-tooltip
+      placement="top"
+      :virtual-ref="tooptipDom"
+      virtual-triggering
+      trigger="hover"
+      :content="tooptipDom?.getAttribute('name')"
+    />
+    <ReCard showHeader>
+      <template #header>
+        <div class="flex justify-between">
+          <div>自定义内容</div>
+          <div class="flex gap-1">
+            <template v-for="item in action" :key="item">
+              <ElTooltip
+                v-if="item.type == 'function'"
+                effect="dark"
+                :content="item.name"
+                placement="top-start"
+              >
+                <div @click="item.render">{{ item.name }}</div>
+              </ElTooltip>
+              <ElPopover
+                v-else-if="item.type == 'component'"
+                :popper-options="{
+                  placement: 'bottom'
+                }"
+                :width="item.width || 150"
+                trigger="click"
+              >
+                <template #reference>
+                  <div
+                    :name="item.name"
+                    @mouseover="e => (tooptipDom = e.currentTarget)"
+                  >
+                    {{ item.name }}
+                  </div>
+                </template>
+                <component :is="item.render" />
+              </ElPopover>
+            </template>
+          </div>
+        </div>
       </template>
-    </ReTable>
+      <ReTable
+        :tableData="tableData"
+        :headData="columns"
+        :selection="true"
+        ref="table"
+        height="calc(100vh - 230px)"
+      >
+        <template v-slot="data">
+          <el-button type="primary" @click="click(data)"> 修改 </el-button>
+        </template>
+      </ReTable>
+    </ReCard>
   </div>
 </template>

@@ -2,6 +2,10 @@ import type { PropType } from "vue";
 import type { HeadData } from "./type";
 
 export const tableProps = {
+  size: {
+    type: String,
+    default: ""
+  },
   height: {
     type: [Number, String],
     default: "100%"

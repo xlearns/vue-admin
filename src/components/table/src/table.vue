@@ -15,6 +15,7 @@ defineExpose({ multipleSelection });
 <template>
   <ElTable
     class="w-full h-full"
+    :size="size"
     :max-height="height"
     :data="tableData"
     :cell-style="cellStyle"

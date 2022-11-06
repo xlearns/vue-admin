@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Card from "@/components/card/index.vue";
+import Card from "@c/card";
 import { VueEcharts } from "@/components";
 import EchartsOptions from "../utils/options";
 
