@@ -2,13 +2,16 @@
 import { h, ref, watchEffect } from "vue";
 import ReTable from "@c/table";
 import ReCard from "@c/card";
+import ReIcon from "@c/icon";
+
 const table = ref();
 const loading = ref(false);
+const size = ref("default");
 const action = [
   {
     name: "刷新",
     type: "function",
-    icon: "",
+    icon: "ep:refresh-right",
     render: () => {
       loading.value = true;
       setTimeout(() => {
@@ -18,16 +21,22 @@ const action = [
   },
   {
     name: "密度",
-    type: "component",
-    icon: "",
-    render: () => {
-      return h("div", { style: { color: "red" } }, 1);
+    type: "dropdown",
+    icon: "icons8:resize-vertical",
+    dropdowns: [
+      { name: "松散", val: "large" },
+      { name: "默认", val: "default" },
+      { name: "紧凑", val: "small" }
+    ],
+    render: _ => {
+      const { val } = _;
+      size.value = val;
     }
   },
   {
     name: "列设置",
     type: "component",
-    icon: "",
+    icon: "ep:setting",
     width: 200,
     render: () => {
       return h("div", { style: { color: "blue" } }, 1);
@@ -118,7 +127,7 @@ watchEffect(() => {
       <template #header>
         <div class="flex justify-between">
           <div>自定义内容</div>
-          <div class="flex gap-1">
+          <div class="flex gap-2">
             <template v-for="item in action" :key="item">
               <ElTooltip
                 v-if="item.type == 'function'"
@@ -126,8 +135,31 @@ watchEffect(() => {
                 :content="item.name"
                 placement="top-start"
               >
-                <div @click="item.render">{{ item.name }}</div>
+                <div @click="item.render">
+                  <ReIcon v-if="item.icon" :icon="item.icon" />
+                  <template v-else>{{ item.name }}</template>
+                </div>
               </ElTooltip>
+              <ElDropdown v-else-if="item.type == 'dropdown'" trigger="click">
+                <div
+                  :name="item.name"
+                  @mouseover="e => (tooptipDom = e.currentTarget)"
+                  class="text-[16px] leading-[24px]"
+                >
+                  <ReIcon v-if="item.icon" :icon="item.icon" />
+                  <template v-else>{{ item.name }}</template>
+                </div>
+                <template #dropdown>
+                  <el-dropdown-menu>
+                    <el-dropdown-item
+                      v-for="dropdown in item.dropdowns"
+                      :key="dropdown"
+                      @click="item.render(dropdown)"
+                      >{{ dropdown.name }}</el-dropdown-item
+                    >
+                  </el-dropdown-menu>
+                </template>
+              </ElDropdown>
               <ElPopover
                 v-else-if="item.type == 'component'"
                 :popper-options="{
@@ -141,7 +173,8 @@ watchEffect(() => {
                     :name="item.name"
                     @mouseover="e => (tooptipDom = e.currentTarget)"
                   >
-                    {{ item.name }}
+                    <ReIcon v-if="item.icon" :icon="item.icon" class="" />
+                    <template v-else>{{ item.name }}</template>
                   </div>
                 </template>
                 <component :is="item.render" />
@@ -151,6 +184,7 @@ watchEffect(() => {
         </div>
       </template>
       <ReTable
+        :size="size"
         :loading="loading"
         :tableData="tableData"
         :headData="columns"
