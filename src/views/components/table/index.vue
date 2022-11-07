@@ -3,10 +3,13 @@ import { h, ref, watchEffect } from "vue";
 import ReTable from "@c/table";
 import ReCard from "@c/card";
 import ReIcon from "@c/icon";
+import Column from "./column.vue";
 
 const table = ref();
 const loading = ref(false);
 const size = ref("default");
+const autoHeight = ref(false);
+
 const action = [
   {
     name: "刷新",
@@ -39,7 +42,7 @@ const action = [
     icon: "ep:setting",
     width: 200,
     render: () => {
-      return h("div", { style: { color: "blue" } }, 1);
+      return h(Column);
     }
   }
 ];
@@ -127,7 +130,10 @@ watchEffect(() => {
       <template #header>
         <div class="flex justify-between">
           <div>自定义内容</div>
-          <div class="flex gap-2">
+          <div class="flex gap-2 items-center">
+            <ElButton @click="autoHeight = !autoHeight"
+              >{{ autoHeight ? "取消" : "" }}自适应高度</ElButton
+            >
             <template v-for="item in action" :key="item">
               <ElTooltip
                 v-if="item.type == 'function'"
@@ -150,14 +156,14 @@ watchEffect(() => {
                   <template v-else>{{ item.name }}</template>
                 </div>
                 <template #dropdown>
-                  <el-dropdown-menu>
-                    <el-dropdown-item
+                  <ElDropdownMenu>
+                    <ElDropdownItem
                       v-for="dropdown in item.dropdowns"
                       :key="dropdown"
                       @click="item.render(dropdown)"
-                      >{{ dropdown.name }}</el-dropdown-item
+                      >{{ dropdown.name }}</ElDropdownItem
                     >
-                  </el-dropdown-menu>
+                  </ElDropdownMenu>
                 </template>
               </ElDropdown>
               <ElPopover
@@ -190,7 +196,7 @@ watchEffect(() => {
         :headData="columns"
         :selection="true"
         ref="table"
-        height="calc(100vh - 230px)"
+        :height="autoHeight ? 'calc(100vh - 238px)' : '100%'"
       >
         <template v-slot="data">
           <el-button type="primary" @click="click(data)"> 修改 </el-button>

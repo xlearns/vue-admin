@@ -23,11 +23,10 @@ const handleSelectionChange = (val: unknown[]) => {
 };
 
 watchEffect(() => {
-  if (props.loading) { 
-     nProgress.start();
+  if (props.loading) {
+    nProgress.start();
   } else {
-     nProgress.done();
-    
+    nProgress.done();
   }
 });
 defineExpose({ multipleSelection });

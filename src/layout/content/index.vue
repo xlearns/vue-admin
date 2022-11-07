@@ -5,7 +5,7 @@ const { el } = useMainElement();
 
 <template>
   <el-main ref="el" class="bg-[#f0f2f5] h-[100vh] !overflow-hidden">
-    <el-scrollbar>
+    <el-scrollbar class="p-[20px]">
       <RouterView>
         <template #default="{ Component, route }">
           <!-- todo:
@@ -22,7 +22,11 @@ const { el } = useMainElement();
 <!-- <style scoped>
 @use "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css";
 </style> -->
-<style scoped>
+<style scoped type="scss">
+.el-main {
+  padding: 0 !important;
+}
+
 .route-animate-enter-active,
 .route-animate-leave-active {
   transition: all 0.5s;
