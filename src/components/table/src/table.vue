@@ -1,21 +1,44 @@
 <script setup lang="ts">
-import { ref, useSlots } from "vue";
+import { ref, useSlots, watchEffect } from "vue";
 import { tableProps } from "./table";
+import nProgress from "@/utils/progress";
 import Render from "./render";
 const multipleSelection = ref<unknown[]>([]);
 
-defineProps(tableProps);
+const props = defineProps(tableProps);
+
+const svg = `
+        <path class="path" d="
+          M 30 15
+          L 28 17
+          M 25.61 25.61
+          A 15 15, 0, 0, 1, 15 30
+          A 15 15, 0, 1, 1, 27.99 7.5
+          L 15 15
+        " style="stroke-width: 4px; fill: rgba(0, 0, 0, 0)"/>
+      `;
 
 const handleSelectionChange = (val: unknown[]) => {
   multipleSelection.value = val;
 };
 
+watchEffect(() => {
+  if (props.loading) { 
+     nProgress.start();
+  } else {
+     nProgress.done();
+    
+  }
+});
 defineExpose({ multipleSelection });
 </script>
 <template>
   <ElTable
     class="w-full h-full"
     :size="size"
+    v-loading="loading"
+    :element-loading-svg="svg"
+    element-loading-svg-view-box="-10, -10, 50, 50"
     :max-height="height"
     :data="tableData"
     :cell-style="cellStyle"

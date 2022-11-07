@@ -6,6 +6,10 @@ export const tableProps = {
     type: String,
     default: ""
   },
+  loading: {
+    type: Boolean,
+    default: false
+  },
   height: {
     type: [Number, String],
     default: "100%"

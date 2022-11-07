@@ -3,13 +3,17 @@ import { h, ref, watchEffect } from "vue";
 import ReTable from "@c/table";
 import ReCard from "@c/card";
 const table = ref();
+const loading = ref(false);
 const action = [
   {
     name: "刷新",
     type: "function",
     icon: "",
     render: () => {
-      alert(1);
+      loading.value = true;
+      setTimeout(() => {
+        loading.value = false;
+      }, 500);
     }
   },
   {
@@ -147,6 +151,7 @@ watchEffect(() => {
         </div>
       </template>
       <ReTable
+        :loading="loading"
         :tableData="tableData"
         :headData="columns"
         :selection="true"
