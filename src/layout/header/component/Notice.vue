@@ -5,7 +5,12 @@ import Tabs from "./notice/Tabs.vue";
 import { useTheme } from "@/hooks/useTheme";
 import { useMenuSetting } from "@/hooks/useMenuSetting";
 import { useNotice } from "./notice/src/useNotice";
-
+defineProps({
+  navState: {
+    type: Boolean,
+    default: false
+  }
+});
 const { NoticeData, NewsData, TodoData } = useNotice();
 
 let num = computed(() => {
@@ -25,7 +30,11 @@ let { navTheme } = useTheme();
     <el-dropdown trigger="click">
       <span class="el-dropdown-link">
         <el-badge :value="num">
-          <Icon class="w-[16px] h-[16px]" icon="carbon:notification" />
+          <Icon
+            class="w-[16px] h-[16px]"
+            icon="carbon:notification"
+            :class="navState ? 'text-[#fff]' : 'text-[#000]'"
+          />
         </el-badge>
       </span>
       <template #dropdown>

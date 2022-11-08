@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { Avatar } from "../utils/static";
 import { useLogin } from "@/hooks/login/useLogin";
+defineProps({
+  navState: {
+    type: Boolean,
+    default: false
+  }
+});
 const { logout } = useLogin();
 </script>
 
@@ -8,7 +14,7 @@ const { logout } = useLogin();
   <el-dropdown trigger="click">
     <div class="box">
       <el-avatar :size="25" :src="Avatar" class="mr-10px" />
-      <span>admin</span>
+      <span :class="navState ? 'text-[#fff]' : 'text-[#000]'">admin</span>
     </div>
     <template #dropdown>
       <el-dropdown-menu>

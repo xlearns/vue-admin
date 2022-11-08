@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, useSlots, watchEffect } from "vue";
+import { ref, useSlots, watchEffect, unref } from "vue";
 import { tableProps } from "./table";
 import nProgress from "@/utils/progress";
 import Render from "./render";
@@ -48,7 +48,9 @@ defineExpose({ multipleSelection });
   >
     <ElTableColumn type="selection" width="55" v-if="selection" />
     <ElTableColumn
-      v-for="(item, index) in headData"
+      v-for="(item, index) in unref(headData).filter(_ =>
+        typeof _.show == 'undefined' ? true : _.show
+      )"
       :align="item.align || 'center'"
       :key="index"
       :prop="item.prop"
@@ -72,7 +74,7 @@ defineExpose({ multipleSelection });
     <ElTableColumn
       v-if="useSlots().default"
       :align="action.align || 'center'"
-      :width="action.width"
+      :width="action.width || 100"
       fixed="right"
     >
       <template #header>{{ action.title || "操作" }}</template>

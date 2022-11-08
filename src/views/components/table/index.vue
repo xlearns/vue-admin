@@ -1,65 +1,16 @@
 <script setup lang="ts">
-import { h, ref, watchEffect } from "vue";
+import type { DefineComponent } from "vue";
+import { h, watchEffect } from "vue";
 import ReTable from "@c/table";
 import ReCard from "@c/card";
 import ReIcon from "@c/icon";
-import Column from "./column.vue";
+import ColumnSetting from "./column.vue";
 
 const table = ref();
 const loading = ref(false);
 const size = ref("default");
 const autoHeight = ref(true);
-
-const action = [
-  {
-    name: "刷新",
-    type: "function",
-    icon: "ep:refresh-right",
-    render: () => {
-      loading.value = true;
-      setTimeout(() => {
-        loading.value = false;
-      }, 500);
-    }
-  },
-  {
-    name: "密度",
-    type: "dropdown",
-    icon: "icons8:resize-vertical",
-    dropdowns: [
-      { name: "松散", val: "large" },
-      { name: "默认", val: "default" },
-      { name: "紧凑", val: "small" }
-    ],
-    render: _ => {
-      const { val } = _;
-      size.value = val;
-    }
-  },
-  {
-    name: "列设置",
-    type: "component",
-    icon: "ep:setting",
-    width: 200,
-    render: () => {
-      return h(Column);
-    }
-  }
-];
-const tooptipDom = ref();
-const tableData = Array.from({ length: 100 }, (_, i) => ({
-  index: i,
-  name: "John Brown",
-  age: 18,
-  address: "New York No. 1 Lake Park",
-  date: "2016-10-03",
-  code: "code",
-  type: "admin",
-  sort: 1,
-  createTime: Date.now()
-}));
-
-const columns = [
+const headInit = [
   {
     label: "序号",
     prop: "index",
@@ -99,13 +50,66 @@ const columns = [
   },
   {
     label: "创建时间",
-    width: 180,
+    // width: 180,
     prop: "createTime",
     formatter: (val: string) => {
       return new Date(val).toLocaleString();
     }
   }
 ];
+const headData = ref(headInit);
+
+const action = [
+  {
+    name: "刷新",
+    type: "function",
+    icon: "ep:refresh-right",
+    render: () => {
+      loading.value = true;
+      setTimeout(() => {
+        loading.value = false;
+      }, 500);
+    }
+  },
+  {
+    name: "密度",
+    type: "dropdown",
+    icon: "icons8:resize-vertical",
+    dropdowns: [
+      { name: "松散", val: "large" },
+      { name: "默认", val: "default" },
+      { name: "紧凑", val: "small" }
+    ],
+    render: _ => {
+      const { val } = _;
+      size.value = val;
+    }
+  },
+  {
+    name: "列设置",
+    type: "component",
+    icon: "ep:setting",
+    width: 200,
+    render: () => {
+      return h(ColumnSetting as unknown as DefineComponent, {
+        column: headData.value
+      });
+    }
+  }
+];
+
+const tooptipDom = ref();
+const tableData = Array.from({ length: 100 }, (_, i) => ({
+  index: i,
+  name: "John Brown",
+  age: 18,
+  address: "New York No. 1 Lake Park",
+  date: "2016-10-03",
+  code: "code",
+  type: "admin",
+  sort: 1,
+  createTime: Date.now()
+}));
 
 function click(_) {
   console.log(_.data.row);
@@ -119,7 +123,7 @@ watchEffect(() => {
 
 <template>
   <div class="w-full h-full border-box">
-    <el-tooltip
+    <ElTooltip
       placement="top"
       :virtual-ref="tooptipDom"
       virtual-triggering
@@ -193,7 +197,7 @@ watchEffect(() => {
         :size="size"
         :loading="loading"
         :tableData="tableData"
-        :headData="columns"
+        :headData="headData"
         :selection="true"
         ref="table"
         :height="autoHeight ? 'calc(100vh - 238px)' : '100%'"

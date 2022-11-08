@@ -3,8 +3,14 @@ import { Icon } from "@iconify/vue";
 import { useTheme } from "@/hooks/useTheme";
 import { useMenuSetting } from "@/hooks/useMenuSetting";
 import { useFullscreen } from "@vueuse/core";
-import { ref } from "vue";
 import { useI18n } from "vue-i18n";
+defineProps({
+  navState: {
+    type: Boolean,
+    default: false
+  }
+});
+
 const { t } = useI18n();
 const { getNavColor } = useMenuSetting();
 let { navTheme } = useTheme();
@@ -23,7 +29,11 @@ const { toggle } = useFullscreen();
       @click="toggle"
       :style="{ color: navTheme == 1 ? getNavColor.text : '#000' }"
     >
-      <Icon class="w-[16px] h-[16px]" icon="ep:full-screen" />
+      <Icon
+        class="w-[16px] h-[16px]"
+        icon="ep:full-screen"
+        :class="navState ? 'text-[#fff]' : 'text-[#000]'"
+      />
     </div>
   </el-tooltip>
 </template>

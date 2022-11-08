@@ -27,7 +27,7 @@ export const tableProps = {
     default: () => ({})
   },
   headData: {
-    type: Array as PropType<HeadData>,
+    type: Array as PropType<HeadData[]>,
     default: () => []
   },
   headercellStyle: {

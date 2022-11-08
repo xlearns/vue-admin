@@ -33,10 +33,10 @@ let { navTheme } = useTheme();
       </div>
       <div class="flex justify-end items-center h-full">
         <Search />
-        <Notice />
-        <AppFull />
-        <AppLocalePicker />
-        <User />
+        <Notice :navState="navTheme != 0" />
+        <AppFull :navState="navTheme != 0" />
+        <AppLocalePicker :navState="navTheme != 0" />
+        <User :navState="navTheme != 0" />
         <Settings />
       </div>
     </div>
