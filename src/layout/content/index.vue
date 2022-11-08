@@ -5,17 +5,19 @@ const { el } = useMainElement();
 
 <template>
   <el-main ref="el" class="bg-[#f0f2f5] h-[100vh] !overflow-hidden">
-    <el-scrollbar class="p-[20px]">
-      <RouterView>
-        <template #default="{ Component, route }">
-          <!-- todo:
+    <el-scrollbar>
+      <div class="p-[20px] h-full w-full box-border">
+        <RouterView>
+          <template #default="{ Component, route }">
+            <!-- todo:
              缓存
         -->
-          <transition name="route-animate" mode="out-in" appear>
-            <component :is="Component" :key="route.fullPath" />
-          </transition>
-        </template>
-      </RouterView>
+            <transition name="route-animate" mode="out-in" appear>
+              <component :is="Component" :key="route.fullPath" />
+            </transition>
+          </template>
+        </RouterView>
+      </div>
     </el-scrollbar>
   </el-main>
 </template>

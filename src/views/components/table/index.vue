@@ -8,7 +8,7 @@ import Column from "./column.vue";
 const table = ref();
 const loading = ref(false);
 const size = ref("default");
-const autoHeight = ref(false);
+const autoHeight = ref(true);
 
 const action = [
   {
