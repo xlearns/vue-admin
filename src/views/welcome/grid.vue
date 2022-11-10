@@ -17,7 +17,19 @@
       >
         {{ `top-2-${index + 1}` }}
       </div>
-      <div class="main-1">main-1</div>
+      <div class="main-1">
+        <el-tooltip
+          effect="dark"
+          placement="top"
+          v-for="item in ['hellohellohellohellohellohello', 'hello']"
+          :content="item"
+          :key="item"
+        >
+          <div v-epEllipsis class="w-[100px]">
+            {{ item }}
+          </div>
+        </el-tooltip>
+      </div>
       <div class="main-2">main-2</div>
     </div>
   </div>
