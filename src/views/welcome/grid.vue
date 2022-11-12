@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Ellipsis from "@c/ellipsis";
+</script>
 
 <template>
   <div class="h-full">
@@ -30,7 +32,15 @@
           </div>
         </el-tooltip>
       </div>
-      <div class="main-2">main-2</div>
+      <div class="main-2">
+        <Ellipsis :ellipsis="{ show: true, width: '50px' }">单行测试</Ellipsis>
+        <br />
+        <Ellipsis
+          content="hello world"
+          :ellipsis="{ show: true, width: '50px' }"
+          >多行测试多行测试多行测试 多行测试多行测试多行测试
+        </Ellipsis>
+      </div>
     </div>
   </div>
 </template>
