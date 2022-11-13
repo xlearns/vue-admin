@@ -19,7 +19,8 @@
     root: "控制面板",
     datavRoot: "数据大屏",
     error: "错误页面",
-    componentsRoot: "组件"
+    componentsRoot: "组件",
+    gamesRoot: "游戏"
   },
   settings: {
     title: "项目配置",

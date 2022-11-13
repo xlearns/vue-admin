@@ -19,7 +19,8 @@
     root: "dashboard",
     datavRoot: "data screen",
     error: "error page",
-    componentsRoot: "components"
+    componentsRoot: "components",
+    gamesRoot: "games"
   },
   settings: {
     title: "Project configuration",
