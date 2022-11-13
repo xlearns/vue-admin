@@ -33,73 +33,71 @@ function getOptions(index: number) {
 </script>
 
 <template>
-  <div class="h-0">
-    <FullScreen
-      ref="dom"
-      :options="{
-        w: w,
-        h: h,
-        zIndex: '0',
-        width: 1920,
-        height: 1080,
-        position: 'absolute'
-      }"
-    >
-      <div class="h-full bg">
-        <Title>
-          <span class="title-text">互联网设备可视化平台</span>
-        </Title>
-        <div class="content flex justify-between px-10">
-          <div class="left flex flex-col justify-around h-full">
-            <Card
-              :width="item.w"
-              :height="item.h"
-              v-for="(item, index) in leftData"
-              :key="index"
-              :title="item.title"
-            >
-              <VueEcharts
-                :options="getOptions(index)"
-                open
-                :animation="{ open: true }"
-              />
-            </Card>
-          </div>
-          <div class="center felx-1 flex flex-col justify-around h-full">
-            <div class="h-[25px] text-[#fff]"></div>
-            <Card
-              :width="item.w"
-              :height="item.h"
-              v-for="(item, index) in centerData"
-              :key="index"
-              :title="item.title"
-            >
-              <VueEcharts
-                :options="getOptions(index == 0 ? 4 : index)"
-                open
-                :animation="{ open: true }"
-              />
-            </Card>
-          </div>
-          <div class="left flex flex-col justify-around h-full">
-            <Card
-              :width="item.w"
-              :height="item.h"
-              v-for="(item, index) in rightData"
-              :key="index"
-              :title="item.title"
-            >
-              <VueEcharts
-                :options="getOptions(index + 1)"
-                open
-                :animation="{ open: true }"
-              />
-            </Card>
-          </div>
+  <FullScreen
+    ref="dom"
+    :options="{
+      w: w,
+      h: h,
+      zIndex: '0',
+      width: 1920,
+      height: 1080,
+      position: 'absolute'
+    }"
+  >
+    <div class="h-full bg">
+      <Title>
+        <span class="title-text">互联网设备可视化平台</span>
+      </Title>
+      <div class="content flex justify-between px-10">
+        <div class="left flex flex-col justify-around h-full">
+          <Card
+            :width="item.w"
+            :height="item.h"
+            v-for="(item, index) in leftData"
+            :key="index"
+            :title="item.title"
+          >
+            <VueEcharts
+              :options="getOptions(index)"
+              open
+              :animation="{ open: true }"
+            />
+          </Card>
+        </div>
+        <div class="center felx-1 flex flex-col justify-around h-full">
+          <div class="h-[25px] text-[#fff]"></div>
+          <Card
+            :width="item.w"
+            :height="item.h"
+            v-for="(item, index) in centerData"
+            :key="index"
+            :title="item.title"
+          >
+            <VueEcharts
+              :options="getOptions(index == 0 ? 4 : index)"
+              open
+              :animation="{ open: true }"
+            />
+          </Card>
+        </div>
+        <div class="left flex flex-col justify-around h-full">
+          <Card
+            :width="item.w"
+            :height="item.h"
+            v-for="(item, index) in rightData"
+            :key="index"
+            :title="item.title"
+          >
+            <VueEcharts
+              :options="getOptions(index + 1)"
+              open
+              :animation="{ open: true }"
+            />
+          </Card>
         </div>
       </div>
-    </FullScreen>
-  </div>
+    </div>
+  </FullScreen>
 </template>
 
 <style scoped>

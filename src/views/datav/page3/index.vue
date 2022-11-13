@@ -31,64 +31,62 @@ function getOptions(index: number) {
 </script>
 
 <template>
-  <div class="h-0">
-    <FullScreen
-      ref="dom"
-      :options="{
-        w: w,
-        h: h,
-        zIndex: '0',
-        width: 1920,
-        height: 1080,
-        position: 'absolute'
-      }"
-    >
-      <div class="h-full bg">
-        <div class="flex p-5">
-          <div>
-            <div
-              class="w-[330px] h-[330px] mb-20px"
-              v-for="item in 3"
-              :key="item"
-            >
-              <Border>
-                <VueEcharts
-                  :options="getOptions(0)"
-                  open
-                  :animation="{ open: true }"
-                />
-              </Border>
-            </div>
-          </div>
-          <div class="flex-1">
-            <div class="text-center text-[#fff] text-8xl">数据大屏</div>
-            <div class="h-[80%]">
+  <FullScreen
+    ref="dom"
+    :options="{
+      w: w,
+      h: h,
+      zIndex: '0',
+      width: 1920,
+      height: 1080,
+      position: 'absolute'
+    }"
+  >
+    <div class="h-full bg">
+      <div class="flex p-5">
+        <div>
+          <div
+            class="w-[330px] h-[330px] mb-20px"
+            v-for="item in 3"
+            :key="item"
+          >
+            <Border>
               <VueEcharts
-                :options="getOptions(4)"
+                :options="getOptions(0)"
                 open
-                :animation="{ open: true, showTip: true }"
+                :animation="{ open: true }"
               />
-            </div>
+            </Border>
           </div>
-          <div>
-            <div
-              class="w-[330px] h-[330px] mb-20px"
-              v-for="item in 3"
-              :key="item"
-            >
-              <Border>
-                <VueEcharts
-                  :options="getOptions(3)"
-                  open
-                  :animation="{ open: true }"
-                />
-              </Border>
-            </div>
+        </div>
+        <div class="flex-1">
+          <div class="text-center text-[#fff] text-8xl">数据大屏</div>
+          <div class="h-[80%]">
+            <VueEcharts
+              :options="getOptions(4)"
+              open
+              :animation="{ open: true, showTip: true }"
+            />
+          </div>
+        </div>
+        <div>
+          <div
+            class="w-[330px] h-[330px] mb-20px"
+            v-for="item in 3"
+            :key="item"
+          >
+            <Border>
+              <VueEcharts
+                :options="getOptions(3)"
+                open
+                :animation="{ open: true }"
+              />
+            </Border>
           </div>
         </div>
       </div>
-    </FullScreen>
-  </div>
+    </div>
+  </FullScreen>
 </template>
 
 <style scoped>
