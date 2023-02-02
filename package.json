@@ -2,6 +2,7 @@
   "name": "vue-admin",
   "version": "0.0.0",
   "scripts": {
+    "serve": "serve ./dist",
     "test": "vitest src/",
     "dev": "vite",
     "build": "rimraf dist && cross-env NODE_ENV=production vite build",
@@ -59,6 +60,7 @@
     "prettier": "^2.6.2",
     "rimraf": "^3.0.2",
     "sass": "^1.53.0",
+    "serve": "^14.2.0",
     "stylelint": "^14.8.2",
     "stylelint-config-html": "^1.0.0",
     "stylelint-config-prettier": "^9.0.3",
